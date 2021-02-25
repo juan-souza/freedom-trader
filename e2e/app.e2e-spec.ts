@@ -38,7 +38,7 @@ describe('CoreUI template', () => {
     expect(body.getAttribute('class')).not.toContain('sidebar-minimized');
   });
 
-  it('should toggle `sidebar-show` body.class on `navbar-toggler` click', () => {
+/*  it('should toggle `sidebar-show` body.class on `navbar-toggler` click', () => {
     browser.driver.manage().window().setSize(600, 800);
     browser.sleep(1000);
     const body = page.getBody();
@@ -53,7 +53,7 @@ describe('CoreUI template', () => {
     button2.click();
     browser.sleep(sleep);
     expect(body.getAttribute('class')).not.toContain('sidebar-show');
-  });
+  });*/
 
   it('should toggle `aside-menu-lg-show` body.class on `navbar-toggler` click', () => {
     browser.manage().window().maximize();

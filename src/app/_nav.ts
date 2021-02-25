@@ -10,6 +10,98 @@ export const navItems: INavData[] = [
       text: 'NEW'
     }
   },
+ /* {
+    name: 'Overview',
+    url: '/theme/colors',
+    icon: 'icon-drop'
+  },
+  {
+    name: 'Bot Config',
+    url: '/theme/colors',
+    icon: 'icon-drop'
+  },
+  {
+    name: 'Trade Bot',
+    url: '/theme/colors',
+    icon: 'icon-drop'
+  },
+  {
+    name: 'Trade Manual',
+    url: '/theme/colors',
+    icon: 'icon-drop'
+  },
+  {
+    name: 'Transacoes',
+    url: '/theme/colors',
+    icon: 'icon-drop'
+  },
+  {
+    name: 'Backtest',
+    url: '/theme/colors',
+    icon: 'icon-drop'
+  },
+  {
+    name: 'Graficos',
+    url: '/theme/colors',
+    icon: 'icon-drop'
+  },
+  {
+    name: 'FAQ/WIKI',
+    url: '/theme/colors',
+    icon: 'icon-drop'
+  },*/
+  {
+    title: true,
+    name: 'Administrador'
+  },
+  {
+    name: 'Usuarios',
+    url: '/adm/users',
+    icon: 'icon-drop'
+  },
+  {
+    name: 'Servidores',
+    url: '/theme/colors',
+    icon: 'icon-drop'
+  },
+  {
+    name: 'Estatísticas',
+    url: '/theme/colors',
+    icon: 'icon-drop'
+  },
+  {
+    name: 'Definicoes',
+    url: '/theme/colors',
+    icon: 'icon-drop'
+  },
+  {
+    name: 'Gerenciamento',
+    url: '/buttons',
+    icon: 'icon-cursor',
+    children: [
+      {
+        name: 'Pagamentos',
+        url: '/buttons/buttons',
+        icon: 'icon-cursor'
+      },
+      {
+        name: 'Suporte',
+        url: '/buttons/dropdowns',
+        icon: 'icon-cursor'
+      },
+      {
+        name: 'Indicacoes',
+        url: '/buttons/dropdowns',
+        icon: 'icon-cursor'
+      },
+      {
+        name: 'Duvidas',
+        url: '/buttons/brand-buttons',
+        icon: 'icon-cursor'
+      }
+    ]
+  }
+  /*,
   {
     title: true,
     name: 'Theme'
@@ -232,20 +324,5 @@ export const navItems: INavData[] = [
       text: 'NEW'
     },
     attributes: { disabled: true },
-  },
-  {
-    name: 'Download CoreUI',
-    url: 'http://coreui.io/angular/',
-    icon: 'icon-cloud-download',
-    class: 'mt-auto',
-    variant: 'success',
-    attributes: { target: '_blank', rel: 'noopener' }
-  },
-  {
-    name: 'Try CoreUI PRO',
-    url: 'http://coreui.io/pro/angular/',
-    icon: 'icon-layers',
-    variant: 'danger',
-    attributes: { target: '_blank', rel: 'noopener' }
-  }
+  }*/
 ];
