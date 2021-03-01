@@ -10,45 +10,59 @@ export const navItems: INavData[] = [
       text: 'NEW'
     }
   },
- /* {
+  {
     name: 'Overview',
     url: '/theme/colors',
-    icon: 'icon-drop'
+    icon: 'icon-drop',
+    attributes: { disabled: true }
   },
   {
-    name: 'Bot Config',
+    name: 'DCA Bot',
     url: '/theme/colors',
-    icon: 'icon-drop'
+    icon: 'icon-drop',
+    attributes: { disabled: true }
   },
   {
-    name: 'Trade Bot',
+    name: 'Transaçoes',
     url: '/theme/colors',
-    icon: 'icon-drop'
+    icon: 'icon-drop',
+    attributes: { disabled: true }
   },
   {
-    name: 'Trade Manual',
+    name: 'Ordens aberta',
     url: '/theme/colors',
-    icon: 'icon-drop'
+    icon: 'icon-drop',
+    attributes: { disabled: true }
   },
   {
-    name: 'Transacoes',
+    name: 'Estrategias',
     url: '/theme/colors',
-    icon: 'icon-drop'
+    icon: 'icon-drop',
+    attributes: { disabled: true }
   },
-  {
+/*  {
     name: 'Backtest',
     url: '/theme/colors',
-    icon: 'icon-drop'
+    icon: 'icon-drop',
+    attributes: { disabled: true },
   },
   {
     name: 'Graficos',
     url: '/theme/colors',
-    icon: 'icon-drop'
+    icon: 'icon-drop',
+    attributes: { disabled: true }
+  },
+  {
+    name: 'Financeiro',
+    url: '/theme/colors',
+    icon: 'icon-drop',
+    attributes: { disabled: true }
   },
   {
     name: 'FAQ/WIKI',
     url: '/theme/colors',
-    icon: 'icon-drop'
+    icon: 'icon-drop',
+    attributes: { disabled: true }
   },*/
   {
     title: true,
@@ -62,42 +76,50 @@ export const navItems: INavData[] = [
   {
     name: 'Servidores',
     url: '/theme/colors',
-    icon: 'icon-drop'
+    icon: 'icon-drop',
+    attributes: { disabled: true }
   },
   {
     name: 'Estatísticas',
     url: '/theme/colors',
-    icon: 'icon-drop'
+    icon: 'icon-drop',
+    attributes: { disabled: true }
   },
   {
     name: 'Definicoes',
     url: '/theme/colors',
-    icon: 'icon-drop'
+    icon: 'icon-drop',
+    attributes: { disabled: true }
   },
   {
     name: 'Gerenciamento',
     url: '/buttons',
     icon: 'icon-cursor',
+    attributes: { disabled: true },
     children: [
       {
         name: 'Pagamentos',
         url: '/buttons/buttons',
-        icon: 'icon-cursor'
+        icon: 'icon-cursor',
+        attributes: { disabled: true }
       },
       {
         name: 'Suporte',
         url: '/buttons/dropdowns',
-        icon: 'icon-cursor'
+        icon: 'icon-cursor',
+        attributes: { disabled: true }
       },
       {
         name: 'Indicacoes',
         url: '/buttons/dropdowns',
-        icon: 'icon-cursor'
+        icon: 'icon-cursor',
+        attributes: { disabled: true }
       },
       {
         name: 'Duvidas',
         url: '/buttons/brand-buttons',
-        icon: 'icon-cursor'
+        icon: 'icon-cursor',
+        attributes: { disabled: true }
       }
     ]
   }
