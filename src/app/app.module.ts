@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -17,11 +18,13 @@ import { AppComponent } from './app.component';
 
 // Import containers
 import { DefaultLayoutComponent } from './containers';
+import { LoggedInGuard } from './_helpers/logged-in.guard';
 
-import { P404Component } from './views/public/error/404.component';
-import { P500Component } from './views/public/error/500.component';
-import { LoginComponent } from './views/public/login/login.component';
-import { RegisterComponent } from './views/public/register/register.component';
+
+import { P404Component } from './views/error/404.component';
+import { P500Component } from './views/error/500.component';
+import { LoginComponent } from './views/login/login.component';
+import { RegisterComponent } from './views/register/register.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -58,6 +61,7 @@ import { ChartsModule } from 'ng2-charts';
     TabsModule.forRoot(),
     ChartsModule,
     IconModule,
+    HttpClientModule,
     IconSetModule.forRoot(),
   ],
   declarations: [
@@ -66,7 +70,7 @@ import { ChartsModule } from 'ng2-charts';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   providers: [
     {
@@ -74,6 +78,7 @@ import { ChartsModule } from 'ng2-charts';
       useClass: PathLocationStrategy
     },
     IconSetService,
+    LoggedInGuard
   ],
   bootstrap: [ AppComponent ]
 })
