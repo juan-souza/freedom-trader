@@ -30,8 +30,4 @@ export class AuthService {
     }, httpOptions);
   }
 
-  isAuth(): boolean {
-    return true;
-  }
-
 }

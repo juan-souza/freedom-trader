@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {CanActivate, Router} from '@angular/router';
-import {AuthService} from '../_services/auth.service';
+import {TokenStorageService} from '../_services/token-storage.service';
 
 @Injectable()
 export class LoggedInGuard implements CanActivate {
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(private auth: TokenStorageService, private router: Router) {
   }
 
   canActivate() {

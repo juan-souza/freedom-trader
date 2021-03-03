@@ -36,4 +36,8 @@ export class TokenStorageService {
 
     return {};
   }
+
+  public isAuth(): boolean {
+    return true;
+  }
 }
