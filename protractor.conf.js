@@ -12,7 +12,7 @@ exports.config = {
     'browserName': 'chrome'
   },
   directConnect: true,
-  baseUrl: 'https://localhost:80/',
+  baseUrl: 'https://freedom-trader.herokuapp.com:80/',
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
