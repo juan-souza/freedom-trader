@@ -21,7 +21,8 @@
     "ng": "ng",
     "postinstall": "ngcc --properties es2015 browser module main --first-only",
     "heroku-postbuild": "ng build --prod --aot --build-optimizer --common-chunk --vendor-chunk --optimization --progress",
-    "start": "ng serve",
+    "start-dev": "ng serve",
+    "start": "node server.js"
     "build": "ng build --prod --aot --build-optimizer --common-chunk --vendor-chunk --optimization --progress",
     "test": "ng test",
     "lint": "ng lint",
