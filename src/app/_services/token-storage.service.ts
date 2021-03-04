@@ -38,6 +38,10 @@ export class TokenStorageService {
   }
 
   public isAuth(): boolean {
-    return true;
+    if (this.getToken()) {
+      console.log('connected');
+      return true;
+    }
+    return false;
   }
 }

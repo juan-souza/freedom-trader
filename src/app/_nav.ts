@@ -4,11 +4,7 @@ export const navItems: INavData[] = [
   {
     name: 'Dashboard',
     url: '/dashboard',
-    icon: 'icon-speedometer',
-    badge: {
-      variant: 'info',
-      text: 'NEW'
-    }
+    icon: 'icon-speedometer'
   },
   {
     name: 'Overview',
@@ -18,27 +14,23 @@ export const navItems: INavData[] = [
   },
   {
     name: 'DCA Bot',
-    url: '/theme/colors',
-    icon: 'icon-drop',
-    attributes: { disabled: true }
-  },
-  {
-    name: 'Transaçoes',
-    url: '/theme/colors',
-    icon: 'icon-drop',
-    attributes: { disabled: true }
+    url: '/dcabot',
+    icon: 'icon-drop'
   },
   {
     name: 'Ordens aberta',
-    url: '/theme/colors',
-    icon: 'icon-drop',
-    attributes: { disabled: true }
+    url: '/orders',
+    icon: 'icon-drop'
+  },
+  {
+    name: 'Transaçoes',
+    url: '/transactions',
+    icon: 'icon-drop'
   },
   {
     name: 'Estrategias',
-    url: '/theme/colors',
-    icon: 'icon-drop',
-    attributes: { disabled: true }
+    url: '/strategies',
+    icon: 'icon-drop'
   },
 /*  {
     name: 'Backtest',
@@ -72,7 +64,7 @@ export const navItems: INavData[] = [
     name: 'Usuarios',
     url: '/adm/users',
     icon: 'icon-drop'
-  },
+  }/*,
   {
     name: 'Servidores',
     url: '/theme/colors',
@@ -122,7 +114,7 @@ export const navItems: INavData[] = [
         attributes: { disabled: true }
       }
     ]
-  }
+  }*/
   /*,
   {
     title: true,

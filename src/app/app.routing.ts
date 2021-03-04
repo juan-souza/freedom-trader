@@ -61,8 +61,28 @@ export const routes: Routes = [
     },
     children: [
       {
+        path: 'dashboard',
+        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'dcabot',
+        loadChildren: () => import('./views/dcabot/dcabot.module').then(m => m.DcabotModule)
+      },
+      {
+        path: 'orders',
+        loadChildren: () => import('./views/orders/orders.module').then(m => m.OrdersModule)
+      },
+      {
+        path: 'transactions',
+        loadChildren: () => import('./views/transactions/transactions.module').then(m => m.TransactionsModule)
+      },
+      {
+        path: 'strategies',
+        loadChildren: () => import('./views/strategies/strategies.module').then(m => m.StrategiesModule)
+      },
+      {
         path: 'adm',
-        loadChildren: () => import('./views/private/adm/users/users.module').then(m => m.UsersModule)
+        loadChildren: () => import('./views/adm/users/users.module').then(m => m.UsersModule)
       },
       {
         path: 'base',
@@ -76,17 +96,14 @@ export const routes: Routes = [
         path: 'charts',
         loadChildren: () => import('./views/zold/chartjs/chartjs.module').then(m => m.ChartJSModule)
       },
-      {
-        path: 'dashboard',
-        loadChildren: () => import('./views/private/dashboard/dashboard.module').then(m => m.DashboardModule)
-      },
+
       {
         path: 'icons',
         loadChildren: () => import('./views/zold/icons/icons.module').then(m => m.IconsModule)
       },
       {
         path: 'notifications',
-        loadChildren: () => import('./views/private/notifications/notifications.module').then(m => m.NotificationsModule)
+        loadChildren: () => import('./views/notifications/notifications.module').then(m => m.NotificationsModule)
       },
       {
         path: 'theme',
