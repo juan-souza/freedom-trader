@@ -47,8 +47,8 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormDebugComponent } from './views/form-debug/form-debug.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   imports: [

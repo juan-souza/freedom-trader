@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class TokenStorageService {
 
-  TOKEN_KEY = 'auth-token';
-  USER_KEY = 'auth-user';
+  TOKEN_KEY: string = 'auth-token';
+  USER_KEY: string = 'auth-user';
 
   constructor() {
   }

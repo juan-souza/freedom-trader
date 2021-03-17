@@ -3,18 +3,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
-
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  apiURL = environment.apiBaseUrl + 'auth/'
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
+  apiURL: String = environment.apiBaseUrl + 'auth/'
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +21,7 @@ export class AuthService {
     return this.http.post(this.apiURL + 'signin', {
       username,
       password
-    }, httpOptions);
+    }, this.httpOptions);
   }
 
   register(username: string, email: string, password: string): Observable<any> {
@@ -31,7 +29,7 @@ export class AuthService {
       username,
       email,
       password
-    }, httpOptions);
+    }, this.httpOptions);
   }
 
 }
