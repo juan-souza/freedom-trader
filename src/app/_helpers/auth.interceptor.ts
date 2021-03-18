@@ -4,19 +4,20 @@ import { HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http'
 
 import { TokenStorageService } from '../_services/token-storage.service';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
-const TOKEN_HEADER_KEY = 'x-access-token';   // for Node.js Express back-end
+
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private token: TokenStorageService) { }
+  constructor(private storageService: TokenStorageService) { }
+
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let authReq = req;
-    const token = this.token.getToken();
+    const token = this.storageService.getToken();
     if (token != null) {
-      // for Node.js Express back-end
-       authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, token) });
+      authReq = req.clone({ headers: req.headers.set(environment.token_header_key, token) });
     }
     return next.handle(authReq);
   }

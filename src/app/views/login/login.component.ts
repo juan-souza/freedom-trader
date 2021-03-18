@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../_services/auth.service';
 import { TokenStorageService } from '../../_services/token-storage.service';
 
@@ -15,47 +16,47 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  roles: string[] = [];
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
+
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
 
   ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
-      this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
+
+    if (!this.tokenStorage.getToken()) {
+      this.router.navigate(['/']);
     }
+
   }
 
   onSubmit(): void {
     const { username, password } = this.form;
 
-    /*  this.authService.login(username, password).subscribe(
-        data => {
-          this.tokenStorage.saveToken(data.accessToken);
-          this.tokenStorage.saveUser(data);
-  
-          this.isLoginFailed = false;
-          this.isLoggedIn = true;
-          this.roles = this.tokenStorage.getUser().roles;
-          this.reloadPage();
-        },
-        err => {
-          this.errorMessage = err.error.message;
-          this.isLoginFailed = true;
-        }
-      );*/
+    this.authService.login(username, password).subscribe(
+      data => {
+        this.tokenStorage.setToken(data);
 
-    if (username === 'juan' && password === 'juan') {
-      this.tokenStorage.saveToken('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXI' +
-        'iLCJpYXQiOjE2MTQ4MTI5NTQsImV4cCI6MTY0NjM0ODk1NCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkd' +
-        'pdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN' +
-        '0cmF0b3IiXX0.zAflF4mVbNqQePRHC2x6EGtTQ3WdyO1D4pkNUxGVXkI');
-      this.tokenStorage.saveUser({ username: username, password: password, admin: true, roles: null });
-      this.isLoginFailed = false;
-      this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
-      this.reloadPage();
-    }
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+
+        this.reloadPage();
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+      }
+    );
+
+    // if (username === 'juan' && password === 'juan') {
+    //   this.tokenStorage.saveToken('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXI' +
+    //     'iLCJpYXQiOjE2MTQ4MTI5NTQsImV4cCI6MTY0NjM0ODk1NCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkd' +
+    //     'pdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN' +
+    //     '0cmF0b3IiXX0.zAflF4mVbNqQePRHC2x6EGtTQ3WdyO1D4pkNUxGVXkI');
+    //   this.tokenStorage.saveUser({ username: username, password: password, admin: true, roles: null });
+    //   this.isLoginFailed = false;
+    //   this.isLoggedIn = true;
+    //   this.roles = this.tokenStorage.getUser().roles;
+    //   this.reloadPage();
+    // }
   }
 
   reloadPage(): void {

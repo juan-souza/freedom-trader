@@ -1,46 +1,35 @@
+import { tokenize } from '@angular/compiler/src/ml_parser/lexer';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenStorageService {
 
-  TOKEN_KEY: string = 'auth-token';
-  USER_KEY: string = 'auth-user';
 
   constructor() {
   }
 
   signOut(): void {
-    window.sessionStorage.clear();
+    localStorage.clear();
   }
 
-  public saveToken(token: string): void {
-    window.sessionStorage.removeItem(this.TOKEN_KEY);
-    window.sessionStorage.setItem(this.TOKEN_KEY, token);
+  getToken(): string | null {
+    const token = JSON.parse(this.getTokenStorage())
+    return token.access_token;
   }
 
-  public getToken(): string | null {
-    return window.sessionStorage.getItem(this.TOKEN_KEY);
+  setToken(token: string): void {
+    localStorage.setItem(environment.access_token, JSON.stringify(token));
   }
 
-  public saveUser(user: any): void {
-    window.sessionStorage.removeItem(this.USER_KEY);
-    window.sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
-  }
-
-  public getUser(): any {
-    const user = window.sessionStorage.getItem(this.USER_KEY);
-    if (user) {
-      return JSON.parse(user);
-    }
-
-    return {};
+  getTokenStorage() {
+    return localStorage.getItem(environment.access_token);
   }
 
   public isAuth(): boolean {
     if (this.getToken()) {
-      console.log('connected');
       return true;
     }
     return false;
