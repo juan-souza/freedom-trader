@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
@@ -68,6 +68,14 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     IconSetModule.forRoot(),
     FormsModule,
+    ToastrModule.forRoot(
+      {
+        timeOut: 3000,
+        progressBar: true,
+        progressAnimation: "increasing",
+        enableHtml: true,
+      }
+    ), // ToastrModule added
   ],
   declarations: [
     AppComponent,

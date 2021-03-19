@@ -24,11 +24,11 @@
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Username"
-                      name="username"
-                      #username="ngModel"
-                      autocomplete="username"
-                      [(ngModel)]="form.username"
+                      placeholder="Email"
+                      name="email"
+                      #email="ngModel"
+                      autocomplete="email"
+                      [(ngModel)]="user.email"
                       required
                     />
                   </div>
@@ -45,7 +45,7 @@
                       name="password"
                       #password="ngModel"
                       autocomplete="current-password"
-                      [(ngModel)]="form.password"
+                      [(ngModel)]="user.password"
                       required
                     />
                   </div>

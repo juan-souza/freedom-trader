@@ -1,7 +1,7 @@
 export class User {
-    id?: String;
-    username: String;
-    password: String;
-    email: String;
-    token?: String;
+    id?: string;
+    username: string;
+    password: string;
+    email: string;
+    token?: string;
 }

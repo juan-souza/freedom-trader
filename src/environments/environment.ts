@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:8085/api',
+  apiBaseUrl: 'http://localhost:5000/api/v1/',
   token_header_key: 'x-access-token',
   access_token: 'currentUser'
 };

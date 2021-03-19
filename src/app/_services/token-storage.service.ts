@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 })
 export class TokenStorageService {
 
+  access_token: string = environment.access_token;
 
   constructor() {
   }
@@ -16,16 +17,22 @@ export class TokenStorageService {
   }
 
   getToken(): string | null {
-    const token = JSON.parse(this.getTokenStorage())
-    return token.access_token;
+    if (this.getTokenStorage() == null) {
+      return null
+    }
+    else {
+      const token = JSON.parse(this.getTokenStorage())
+      return token.access_token;
+    }
+
   }
 
   setToken(token: string): void {
-    localStorage.setItem(environment.access_token, JSON.stringify(token));
+    localStorage.setItem(this.access_token, JSON.stringify(token));
   }
 
   getTokenStorage() {
-    return localStorage.getItem(environment.access_token);
+    return localStorage.getItem(this.access_token);
   }
 
   public isAuth(): boolean {
