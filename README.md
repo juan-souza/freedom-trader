@@ -5,7 +5,11 @@
 ### Dependencias FrontEnd(Angular9)
 
 - npm install -g @angular/cli
+
   - Instalação do angular global
+
+- Toaster (ngx-toastr)
+  - npm install ngx-toastr --save
 
 **Comandos**
 
@@ -55,3 +59,5 @@
 - [Angular](https://cli.angular.io/)
 
 - [Format GitHub](https://help.github.com/en/articles/basic-writing-and-formatting-syntax)
+
+- [Toastr](https://www.npmjs.com/package/ngx-toastr)
