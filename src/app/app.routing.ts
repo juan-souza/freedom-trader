@@ -3,13 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
-import { LoggedInGuard } from './_helpers/logged-in.guard';
+import { LoggedInGuard } from './core/guards/auth.guard';
 
-import { P404Component } from './views/error/404.component';
-import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
-import { ForgotPasswordComponent } from './views/forgot/forgot-password.component';
+import { P404Component } from './core/components/error/404.component';
+import { P500Component } from './core/components/error/500.component';
+import { LoginComponent } from './core/components/login/login.component';
+import { RegisterComponent } from './core/components/register/register.component';
+import { ForgotPasswordComponent } from './core/components/forgot/forgot-password.component';
 
 export const routes: Routes = [
   {
@@ -62,27 +62,27 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
+        loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
         path: 'dcabot',
-        loadChildren: () => import('./views/dcabot/dcabot.module').then(m => m.DcabotModule)
+        loadChildren: () => import('./modules/dcabot/dcabot.module').then(m => m.DcabotModule)
       },
       {
         path: 'orders',
-        loadChildren: () => import('./views/orders/orders.module').then(m => m.OrdersModule)
+        loadChildren: () => import('./modules/orders/orders.module').then(m => m.OrdersModule)
       },
       {
         path: 'transactions',
-        loadChildren: () => import('./views/transactions/transactions.module').then(m => m.TransactionsModule)
+        loadChildren: () => import('./modules/transactions/transactions.module').then(m => m.TransactionsModule)
       },
       {
         path: 'strategies',
-        loadChildren: () => import('./views/strategies/strategies.module').then(m => m.StrategiesModule)
+        loadChildren: () => import('./modules/strategies/strategies.module').then(m => m.StrategiesModule)
       },
       {
         path: 'adm',
-        loadChildren: () => import('./views/adm/users/users.module').then(m => m.UsersModule)
+        loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule)
       },
       {
         path: 'base',
@@ -103,7 +103,7 @@ export const routes: Routes = [
       },
       {
         path: 'notifications',
-        loadChildren: () => import('./views/notifications/notifications.module').then(m => m.NotificationsModule)
+        loadChildren: () => import('./modules/notifications/notifications.module').then(m => m.NotificationsModule)
       },
       {
         path: 'theme',

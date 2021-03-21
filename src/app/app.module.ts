@@ -19,14 +19,14 @@ import { AppComponent } from './app.component';
 
 // Import containers
 import { DefaultLayoutComponent } from './containers';
-import { LoggedInGuard } from './_helpers/logged-in.guard';
+import { LoggedInGuard } from './core/guards/auth.guard';
 
 
-import { P404Component } from './views/error/404.component';
-import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
-import { ForgotPasswordComponent } from './views/forgot/forgot-password.component';
+import { P404Component } from './core/components/error/404.component';
+import { P500Component } from './core/components/error/500.component';
+import { LoginComponent } from './core/components/login/login.component';
+import { RegisterComponent } from './core/components/register/register.component';
+import { ForgotPasswordComponent } from './core/components/forgot/forgot-password.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
