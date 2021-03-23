@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
-import { LoggedInGuard } from './core/guards/auth.guard';
+import { AuthGuard } from './core/guards/auth.guard';
 
 import { P404Component } from './core/components/error/404.component';
 import { P500Component } from './core/components/error/500.component';
@@ -12,11 +12,7 @@ import { RegisterComponent } from './core/components/register/register.component
 import { ForgotPasswordComponent } from './core/components/forgot/forgot-password.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
+
   {
     path: '404',
     component: P404Component,
@@ -55,7 +51,7 @@ export const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponent,
-    canActivate: [LoggedInGuard],
+    canActivate: [AuthGuard],
     data: {
       title: 'Home'
     },

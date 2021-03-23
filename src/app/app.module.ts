@@ -19,7 +19,7 @@ import { AppComponent } from './app.component';
 
 // Import containers
 import { DefaultLayoutComponent } from './containers';
-import { LoggedInGuard } from './core/guards/auth.guard';
+import { AuthGuard } from './core/guards/auth.guard';
 
 
 import { P404Component } from './core/components/error/404.component';
@@ -93,7 +93,7 @@ import { FormsModule } from '@angular/forms';
       useClass: PathLocationStrategy
     },
     IconSetService,
-    LoggedInGuard
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

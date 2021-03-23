@@ -24,10 +24,10 @@ export class AuthService {
     }, this.httpOptions);
   }
 
-  register(username: string, email: string, password: string): Observable<any> {
+  register(name: string, email: string, password: string): Observable<any> {
     const register_conde: String = "botcrypto";
     return this.http.post<any>(this.apiURL + 'register', {
-      username,
+      name,
       email,
       password,
       register_conde

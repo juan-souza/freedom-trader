@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { TokenStorageService } from '../../services/token-storage.service';
 import { User } from '../../../modules/users/models/user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,15 +20,15 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService,
     private tokenStorage: TokenStorageService,
+    private toastr: ToastrService,
     private router: Router) { }
 
   ngOnInit(): void {
 
-    if (!this.tokenStorage.getToken()) {
-      this.router.navigate(['/']);
-    }
+    // if (!this.tokenStorage.getToken()) {
+    //   this.router.navigate(['/']);
+    // }
     this.user = new User()
-
   }
 
   onSubmit(): void {
@@ -44,7 +45,10 @@ export class LoginComponent implements OnInit {
       },
       err => {
         this.errors = [err.error.message];
-        this.isLoginFailed = true;
+        console.log(this.errors)
+        this.errors.forEach(element => {
+          this.toastr.error(`${element}`)
+        });
       }
     );
 

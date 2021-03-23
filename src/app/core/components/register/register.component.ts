@@ -23,7 +23,7 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    this.authService.register(this.user.username, this.user.password, this.user.email)
+    this.authService.register(this.user.username, this.user.email, this.user.password,)
       .subscribe(res => {
         this.toastr.success('Seu cadastro foi realizado com sucesso!'
           , 'Você receberá um e-mail para confirmar sua conta!', { timeOut: 10000, });
