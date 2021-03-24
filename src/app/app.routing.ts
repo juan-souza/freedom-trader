@@ -12,7 +12,6 @@ import { RegisterComponent } from './core/components/register/register.component
 import { ForgotPasswordComponent } from './core/components/forgot/forgot-password.component';
 
 export const routes: Routes = [
-
   {
     path: '404',
     component: P404Component,
@@ -30,6 +29,7 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [AuthGuard],
     data: {
       title: 'Login Page'
     }

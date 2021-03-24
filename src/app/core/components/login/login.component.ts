@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   user: User;
   isLoggedIn = false;
   isLoginFailed = false;
-  errors: string[]
+  errors: string[];
 
 
   constructor(private authService: AuthService,
@@ -28,15 +28,15 @@ export class LoginComponent implements OnInit {
     // if (!this.tokenStorage.getToken()) {
     //   this.router.navigate(['/']);
     // }
-    this.user = new User()
+    this.user = new User();
   }
 
   onSubmit(): void {
-    const { email, password } = this.user;
+    const {email, password} = this.user;
 
     this.authService.login(email, password).subscribe(
       data => {
-        this.tokenStorage.setToken(data);
+        this.tokenStorage.setToken(data.token);
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
@@ -45,13 +45,11 @@ export class LoginComponent implements OnInit {
       },
       err => {
         this.errors = [err.error.message];
-        console.log(this.errors)
         this.errors.forEach(element => {
-          this.toastr.error(`${element}`)
+          this.toastr.error(`${element}`);
         });
       }
     );
-
   }
 
   reloadPage(): void {
