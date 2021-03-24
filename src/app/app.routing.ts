@@ -13,7 +13,6 @@ import { ForgotPasswordComponent } from './core/components/forgot/forgot-passwor
 import { DefaultLayoutComponent } from './modules/default-layout';
 
 export const routes: Routes = [
-
   {
     path: '404',
     component: P404Component,
@@ -31,6 +30,7 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [AuthGuard],
     data: {
       title: 'Login Page'
     }

@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
       },
       err => {
         this.errors = [err.error.message];
-        console.log(this.errors)
         this.errors.forEach(element => {
           this.toastr.error(`${element}`)
         });
