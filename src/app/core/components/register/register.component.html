@@ -20,9 +20,9 @@
                     type="text"
                     class="form-control"
                     placeholder="Nome de Usuário"
-                    autocomplete="username"
+                    autocomplete="name"
                     [class.is-invalid]="!name.valid && name.touched"
-                    [(ngModel)]="user.username"
+                    [(ngModel)]="user.name"
                     required
                     #name="ngModel"
                   />

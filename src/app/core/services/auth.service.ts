@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-
+import { TokenStorageService } from './token-storage.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +14,7 @@ export class AuthService {
 
   apiURL: String = environment.apiBaseUrl + 'auth/'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private tokenStorageService: TokenStorageService) { }
 
 
   login(email: string, password: string): Observable<any> {
@@ -35,6 +35,20 @@ export class AuthService {
     }, this.httpOptions);
   }
 
+  logout() {
+    this.tokenStorageService.removeToken();
+  }
 
+  isAuthenticated(): boolean {
+    return this.tokenStorageService.isTokenExpired()
+  }
+
+  setToken(data: string) {
+    this.tokenStorageService.setToken(data)
+  }
 
 }
+
+
+
+

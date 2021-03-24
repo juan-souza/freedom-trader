@@ -9,7 +9,11 @@
   - Instalação do angular global
 
 - Toaster (ngx-toastr)
+
   - npm install ngx-toastr --save
+
+- Decore JWT
+  - npm install @auth0/angular-jwt
 
 **Comandos**
 

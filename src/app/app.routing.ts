@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Import Containers
-import { DefaultLayoutComponent } from './containers';
+
 import { AuthGuard } from './core/guards/auth.guard';
 
 import { P404Component } from './core/components/error/404.component';
@@ -10,6 +10,7 @@ import { P500Component } from './core/components/error/500.component';
 import { LoginComponent } from './core/components/login/login.component';
 import { RegisterComponent } from './core/components/register/register.component';
 import { ForgotPasswordComponent } from './core/components/forgot/forgot-password.component';
+import { DefaultLayoutComponent } from './modules/default-layout';
 
 export const routes: Routes = [
 
@@ -58,14 +59,17 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboard',
+        canActivate: [AuthGuard],
         loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
         path: 'dcabot',
+        canActivate: [AuthGuard],
         loadChildren: () => import('./modules/dcabot/dcabot.module').then(m => m.DcabotModule)
       },
       {
         path: 'orders',
+        canActivate: [AuthGuard],
         loadChildren: () => import('./modules/orders/orders.module').then(m => m.OrdersModule)
       },
       {
@@ -74,10 +78,12 @@ export const routes: Routes = [
       },
       {
         path: 'strategies',
+        canActivate: [AuthGuard],
         loadChildren: () => import('./modules/strategies/strategies.module').then(m => m.StrategiesModule)
       },
       {
         path: 'adm',
+        canActivate: [AuthGuard],
         loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule)
       },
       {

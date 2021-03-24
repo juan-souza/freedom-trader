@@ -7,7 +7,6 @@
             <div class="card p-4">
               <div class="card-body">
                 <form
-                  *ngIf="!isLoggedIn"
                   name="form"
                   (ngSubmit)="f.form.valid && onSubmit()"
                   #f="ngForm"
@@ -55,9 +54,7 @@
                     role="alert"
                     *ngIf="f.form.invalid && f.submitted && false"
                   >
-                    <div *ngIf="username.errors.required">
-                      Username is required
-                    </div>
+                    <div *ngIf="name.errors.required">Name is required</div>
                     <div *ngIf="password.errors.required">
                       Password is required
                     </div>
@@ -65,14 +62,6 @@
                       Password must be at least 6 characters
                     </div>
                   </div>
-
-                  <!-- <div
-                    class="alert alert-danger"
-                    role="alert"
-                    *ngIf="f.submitted && isLoginFailed"
-                  >
-                    Login failed: {{ errorMessage }}
-                  </div> -->
 
                   <div class="row">
                     <div class="col-6">

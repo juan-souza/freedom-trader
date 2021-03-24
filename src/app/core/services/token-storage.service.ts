@@ -1,6 +1,7 @@
 import { tokenize } from '@angular/compiler/src/ml_parser/lexer';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { JwtHelperService } from '@auth0/angular-jwt'
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +9,13 @@ import { environment } from '../../../environments/environment';
 export class TokenStorageService {
 
   access_token: string = environment.access_token;
+  jwtHelper: JwtHelperService = new JwtHelperService();
 
   constructor() {
   }
 
-  signOut(): void {
-    localStorage.clear();
+  removeToken(): void {
+    localStorage.removeItem(this.access_token);
   }
 
   getToken(): string | null {
@@ -24,7 +26,6 @@ export class TokenStorageService {
       const token = JSON.parse(this.getTokenStorage())
       return token.access_token;
     }
-
   }
 
   setToken(token: string): void {
@@ -35,10 +36,13 @@ export class TokenStorageService {
     return localStorage.getItem(this.access_token);
   }
 
-  public isAuth(): boolean {
-    if (this.getToken()) {
-      return true;
+  isTokenExpired(): boolean {
+    const token = this.getToken()
+    if (token) {
+      const expired = this.jwtHelper.isTokenExpired(token)
+      return !expired;
     }
     return false;
   }
+
 }

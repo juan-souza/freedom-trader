@@ -13,21 +13,16 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent implements OnInit {
 
   user: User;
-  isLoggedIn = false;
-  isLoginFailed = false;
   errors: string[]
 
-
   constructor(private authService: AuthService,
-    private tokenStorage: TokenStorageService,
     private toastr: ToastrService,
     private router: Router) { }
 
   ngOnInit(): void {
-
-    // if (!this.tokenStorage.getToken()) {
-    //   this.router.navigate(['/']);
-    // }
+    if (!this.authService.isAuthenticated) {
+      this.router.navigate(['/']);
+    }
     this.user = new User()
   }
 
@@ -36,12 +31,8 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(email, password).subscribe(
       data => {
-        this.tokenStorage.setToken(data);
-
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-
-        this.reloadPage();
+        this.authService.setToken(data);
+        this.router.navigate(['/dashboard'])
       },
       err => {
         this.errors = [err.error.message];
