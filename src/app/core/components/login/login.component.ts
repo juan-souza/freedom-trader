@@ -20,9 +20,7 @@ export class LoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    if (!this.authService.isAuthenticated) {
-      this.router.navigate(['/']);
-    }
+
     this.user = new User()
   }
 
