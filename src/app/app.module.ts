@@ -50,6 +50,7 @@ import { ChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { DefaultLayoutComponent } from './modules/default-layout';
+import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { DefaultLayoutComponent } from './modules/default-layout';
         enableHtml: true,
         positionClass: 'toast-bottom-right',
       }
-    ), // ToastrModule added
+    ),
+    DataTablesModule
   ],
   declarations: [
     AppComponent,

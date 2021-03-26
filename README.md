@@ -12,8 +12,25 @@
 
   - npm install ngx-toastr --save
 
-- Decore JWT
+- Decode JWT
+
   - npm install @auth0/angular-jwt
+
+- Jquery
+
+  - npm install jquery --save
+  - npm install @types/jquery --save-dev
+
+- DataTables Automatica
+
+  - ng add angular-datatables
+
+- DataTables Manual
+  - Precisa do Jquery
+  - npm install datatables.net --save
+  - npm install datatables.net-dt --save
+  - npm install angular-datatables --save -
+  - npm install @types/datatables.net --save-dev
 
 **Comandos**
 
@@ -65,3 +82,5 @@
 - [Format GitHub](https://help.github.com/en/articles/basic-writing-and-formatting-syntax)
 
 - [Toastr](https://www.npmjs.com/package/ngx-toastr)
+
+- [DataTables](http://l-lin.github.io/angular-datatables/#/advanced/router-link)
