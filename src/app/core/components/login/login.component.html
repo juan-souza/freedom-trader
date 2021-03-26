@@ -7,9 +7,9 @@
             <div class="card p-4">
               <div class="card-body">
                 <form
-                  name="form"
-                  (ngSubmit)="f.form.valid && onSubmit()"
-                  #f="ngForm"
+                  name="LoginForm"
+                  (ngSubmit)="LoginForm.form.valid && onSubmit()"
+                  #LoginForm="ngForm"
                   novalidate
                 >
                   <h1>Login</h1>
@@ -26,10 +26,17 @@
                       placeholder="Email"
                       name="email"
                       #email="ngModel"
+                      [class.is-invalid]="!email.valid && email.touched"
                       autocomplete="email"
                       [(ngModel)]="user.email"
                       required
                     />
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="!email.valid && email.touched"
+                    >
+                      Informe o E-mail!
+                    </div>
                   </div>
                   <div class="input-group mb-4">
                     <div class="input-group-prepend">
@@ -44,28 +51,26 @@
                       name="password"
                       #password="ngModel"
                       autocomplete="current-password"
+                      [class.is-invalid]="!password.valid && password.touched"
                       [(ngModel)]="user.password"
                       required
                     />
-                  </div>
 
-                  <div
-                    class="alert alert-danger"
-                    role="alert"
-                    *ngIf="f.form.invalid && f.submitted && false"
-                  >
-                    <div *ngIf="name.errors.required">Name is required</div>
-                    <div *ngIf="password.errors.required">
-                      Password is required
-                    </div>
-                    <div *ngIf="password.errors.minlength">
-                      Password must be at least 6 characters
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="!password.valid && password.touched"
+                    >
+                      Informe a senha!
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="col-6">
-                      <button type="submit" class="btn btn-primary px-4">
+                      <button
+                        type="submit"
+                        class="btn btn-primary px-4"
+                        [disabled]="!LoginForm.valid"
+                      >
                         Login
                       </button>
                     </div>
