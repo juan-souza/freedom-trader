@@ -32,30 +32,30 @@ export const navItems: INavData[] = [
     url: '/strategies',
     icon: 'icon-drop'
   },
-/*  {
-    name: 'Backtest',
-    url: '/theme/colors',
-    icon: 'icon-drop',
-    attributes: { disabled: true },
-  },
-  {
-    name: 'Graficos',
-    url: '/theme/colors',
-    icon: 'icon-drop',
-    attributes: { disabled: true }
-  },
-  {
-    name: 'Financeiro',
-    url: '/theme/colors',
-    icon: 'icon-drop',
-    attributes: { disabled: true }
-  },
-  {
-    name: 'FAQ/WIKI',
-    url: '/theme/colors',
-    icon: 'icon-drop',
-    attributes: { disabled: true }
-  },*/
+  /*  {
+      name: 'Backtest',
+      url: '/theme/colors',
+      icon: 'icon-drop',
+      attributes: { disabled: true },
+    },
+    {
+      name: 'Graficos',
+      url: '/theme/colors',
+      icon: 'icon-drop',
+      attributes: { disabled: true }
+    },
+    {
+      name: 'Financeiro',
+      url: '/theme/colors',
+      icon: 'icon-drop',
+      attributes: { disabled: true }
+    },
+    {
+      name: 'FAQ/WIKI',
+      url: '/theme/colors',
+      icon: 'icon-drop',
+      attributes: { disabled: true }
+    },*/
   {
     title: true,
     name: 'Administrador'
