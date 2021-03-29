@@ -60,6 +60,11 @@ export const routes: Routes = [
         loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
+        path: 'access-point',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./modules/access-point/access-point.module').then(m => m.AccessPointModule)
+      },
+      {
         path: 'dcabot',
         canActivate: [AuthGuard],
         loadChildren: () => import('./modules/dcabot/dcabot.module').then(m => m.DcabotModule)

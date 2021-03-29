@@ -7,10 +7,9 @@ export const navItems: INavData[] = [
     icon: 'icon-speedometer'
   },
   {
-    name: 'Overview',
-    url: '/theme/colors',
-    icon: 'icon-drop',
-    attributes: { disabled: true }
+    name: 'Ponto de Acesso',
+    url: '/access-point',
+    icon: 'icon-drop'
   },
   {
     name: 'DCA Bot',
