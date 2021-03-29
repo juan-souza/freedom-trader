@@ -51,8 +51,6 @@ import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { DefaultLayoutComponent } from './modules/default-layout';
 import { DataTablesModule } from 'angular-datatables';
-import { UsersListComponent } from './modules/users/users-list/users-list.component';
-
 
 
 @NgModule({
@@ -82,7 +80,7 @@ import { UsersListComponent } from './modules/users/users-list/users-list.compon
         positionClass: 'toast-bottom-right',
       }
     ),
-    DataTablesModule
+    DataTablesModule,
   ],
   declarations: [
     AppComponent,
@@ -92,7 +90,6 @@ import { UsersListComponent } from './modules/users/users-list/users-list.compon
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    UsersListComponent,
   ],
   providers: [
     {

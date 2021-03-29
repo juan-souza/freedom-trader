@@ -62,7 +62,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Usuarios',
-    url: '/adm/users',
+    url: '/users',
     icon: 'icon-drop'
   }/*,
   {

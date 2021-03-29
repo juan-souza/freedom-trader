@@ -1,27 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UsersListComponent } from './users-list/users-list.component';
+import { UsersComponent } from './users.component';
 
 
 const routes: Routes = [
   {
-    path: 'users',
+    path: '',
+    component: UsersComponent,
     data: {
-      title: 'Users'
+      title: 'Usuários'
     },
     children: [
       {
-        path: '',
-        redirectTo: 'list'
-      },
-      {
-        path: 'list',
-        component: UsersListComponent,
-        data: {
-          title: 'Lista de Usuários'
-        }
-      },
+        path: 'users',
+        component: UsersComponent,
 
+      }
     ]
   }
 ]

@@ -79,7 +79,7 @@ export const routes: Routes = [
         loadChildren: () => import('./modules/strategies/strategies.module').then(m => m.StrategiesModule)
       },
       {
-        path: 'adm',
+        path: 'users',
         canActivate: [AuthGuard],
         loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule)
       },

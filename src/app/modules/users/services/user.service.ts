@@ -13,13 +13,21 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  insert() { }
 
-
-
-  findAll(): Observable<User[]> {
-    return null
+  delete(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiURL}/${id}}`)
   }
 
+  findAll(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiURL}`)
+  }
+
+  findById(id: Number): Observable<User> {
+    return this.http.get<User>(`${this.apiURL}/${id}`);
+  }
+
+  update() { }
 
 
 }
