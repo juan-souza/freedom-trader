@@ -27,6 +27,7 @@ export class UsersComponent implements OnInit {
 
 
   deletePreview(user: User) {
+    console.log(user)
     this.userDelete = user;
   }
 
