@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 // Tabs Component
 import { TabsModule } from 'ngx-bootstrap/tabs';
@@ -31,6 +32,7 @@ import { UsersComponent } from './users.component';
         positionClass: 'toast-bottom-right',
       }
     ),
+    ModalModule.forRoot()
 
   ],
   declarations: [

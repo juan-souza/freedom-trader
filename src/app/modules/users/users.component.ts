@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { User } from './models/user';
 import { UserService } from './services/user.service';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-users',
@@ -9,6 +10,7 @@ import { UserService } from './services/user.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+  @ViewChild('deleteUserModal') public deleteUserModal: ModalDirective;
 
   users: User[] = [];
   userDelete: User
@@ -27,11 +29,12 @@ export class UsersComponent implements OnInit {
 
 
   deletePreview(user: User) {
-    console.log(user)
     this.userDelete = user;
+    this.deleteUserModal.show()
   }
 
   delete(id: number) {
+    this.deleteUserModal.hide()
     this.userService.delete(id).subscribe(
       (response) => {
         this.toastr.success(`Usuário <b>${this.userDelete.name}</b> deletado com sucesso!`);
