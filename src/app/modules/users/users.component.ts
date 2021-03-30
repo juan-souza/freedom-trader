@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { User } from './models/user';
 import { UserService } from './services/user.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { Roles } from './models/enum/roles';
 
 @Component({
   selector: 'app-users',
@@ -14,6 +15,9 @@ export class UsersComponent implements OnInit {
 
   users: User[] = [];
   userDelete: User
+  userRoles = Roles;
+
+
 
   constructor(private userService: UserService, private toastr:
     ToastrService,) { }
@@ -45,5 +49,4 @@ export class UsersComponent implements OnInit {
       }
     );
   }
-
 }
