@@ -1,0 +1,7 @@
+export enum UserStatuInfo {
+    PENDING_CONFIRM_EMAIL,
+    PENDING_PAYMENT,
+    TIME_TRIAL,
+    PAYMENT_CONFIRMED,
+    LATE_PAYMENT,
+}

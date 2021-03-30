@@ -31,7 +31,21 @@
                 <td>{{ user.email }}</td>
                 <td>{{ userRoles[user.role] }}</td>
                 <td class="text-center">{{ user.createDate }}</td>
-                <td class="text-center">{{ user.status }}</td>
+                <td>
+                  <span
+                    class="badge"
+                    [ngClass]="
+                      user.active == true ? 'badge-success' : 'badge-secondary'
+                    "
+                    >{{ user.active == true ? "Ativo" : "Inativo" }}</span
+                  >
+                  <span
+                    class="badge"
+                    [ngClass]="getUserStatusInfoClass(user.statusInfo)"
+                    >{{ userStatusInfo[user.statusInfo] }}</span
+                  >
+                </td>
+
                 <td class="table-actions">
                   <button
                     type="button"

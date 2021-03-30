@@ -4,6 +4,7 @@ import { User } from './models/user';
 import { UserService } from './services/user.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Roles } from './models/enum/roles';
+import { UserStatuInfo } from './models/enum/userStatusInfo';
 
 @Component({
   selector: 'app-users',
@@ -16,6 +17,7 @@ export class UsersComponent implements OnInit {
   users: User[] = [];
   userDelete: User
   userRoles = Roles;
+  userStatusInfo = UserStatuInfo;
 
 
 
@@ -49,4 +51,32 @@ export class UsersComponent implements OnInit {
       }
     );
   }
+
+
+  getUserStatusInfoClass(userStatusInfo: number): string {
+
+    let classStatusInfo: string = 'badge-warning';
+
+    switch (userStatusInfo) {
+      case UserStatuInfo.PENDING_CONFIRM_EMAIL:
+        classStatusInfo = 'badge-warning'
+        break;
+      case UserStatuInfo.PENDING_PAYMENT:
+        classStatusInfo = 'badge-warning'
+        break;
+      case UserStatuInfo.TIME_TRIAL:
+        classStatusInfo = 'badge-warning'
+        break;
+      case UserStatuInfo.PAYMENT_CONFIRMED:
+        classStatusInfo = 'badge-warning'
+        break;
+      case UserStatuInfo.LATE_PAYMENT:
+        classStatusInfo = 'badge-warning'
+        break;
+    }
+
+    return classStatusInfo
+
+  }
+
 }
