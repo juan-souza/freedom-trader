@@ -9,9 +9,7 @@
         </div>
 
         <div class="card-body">
-          <table
-            class="table table-responsive-sm table-hover table-outline mb-0"
-          >
+          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-responsive-sm table-hover table-outline mb-0 row-border hover">
             <thead class="thead-light">
             <tr>
               <th class="text-center"><i class="icon-people"></i></th>
@@ -23,7 +21,6 @@
               <th>Ações</th>
             </tr>
             </thead>
-
             <tbody>
             <tr *ngFor="let user of users">
               <td class="text-center">{{ user.id }}</td>
@@ -31,14 +28,13 @@
               <td>{{ user.email }}</td>
               <td>{{ user.role }}</td>
               <td class="text-center">{{ user.createDate }}</td>
-              <td class="text-center">{{ user.status }}</td>
+              <td class="text-center">{{ user.active }}</td>
               <td class="table-actions">
                 <button
                   type="button"
                   class="btn btn-warning mr-1"
                   title="Editar"
-                  routerLink=""
-                >
+                  routerLink="">
                   <i class="fa fa-edit"> </i>
                 </button>
                 <button
@@ -46,8 +42,7 @@
                   class="btn btn-danger"
                   title="Excluir"
                   data-toggle="modal"
-                  data-target="#modalDelet"
-                >
+                  data-target="#modalDelet">
                   <i class="fa fa-trash"> </i>
                 </button>
               </td>
@@ -60,3 +55,54 @@
   </div>
 </div>
 
+<!-- Modal -->
+<div
+  bsModal
+  #deleteUserModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="deleteUserModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-danger" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Excluir Usuário</h4>
+        <button
+          type="button"
+          class="close"
+          (click)="deleteUserModal.hide()"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body" *ngIf="userDelete">
+        Tem certeza de que deseja excluir o usuário
+        <b> {{ userDelete.name }}? </b>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="delete(userDelete.id)"
+        >
+          Confirmar
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger text-white"
+          (click)="deleteUserModal.hide()"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
