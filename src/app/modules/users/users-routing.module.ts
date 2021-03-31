@@ -1,26 +1,41 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UsersFormComponent } from './users-form/users-form.component';
 import { UsersComponent } from './users.component';
 
 
-const routes: Routes = [
+const userRoutes: Routes = [
   {
+
     path: '',
-    component: UsersComponent,
     data: {
-      title: 'Usuários'
+      title: 'Usuários',
     },
     children: [
       {
-        path: 'form',
+        path: '',
+        redirectTo: 'list'
+      },
+      {
+        path: 'list',
         component: UsersComponent,
+        data: {
+          title: ''
+        }
+      },
+      {
+        path: 'form',
+        component: UsersFormComponent,
+        data: {
+          title: 'Formulário'
+        }
       }
     ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(userRoutes)],
   exports: [RouterModule]
 })
 export class UsersRoutingModule { }

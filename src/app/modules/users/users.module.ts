@@ -2,7 +2,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TabsModule } from 'ngx-bootstrap/tabs';
@@ -10,6 +9,7 @@ import { UserService } from './services/user.service';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
 import { DataTablesModule } from 'angular-datatables';
+import { UsersFormComponent } from './users-form/users-form.component';
 
 @NgModule({
   imports: [
@@ -17,7 +17,6 @@ import { DataTablesModule } from 'angular-datatables';
     CommonModule,
     TabsModule.forRoot(),
     FormsModule,
-    RouterModule,
     ToastrModule.forRoot(
       {
         timeOut: 3000,
@@ -33,10 +32,12 @@ import { DataTablesModule } from 'angular-datatables';
   ],
   declarations: [
     UsersComponent,
-    UsersComponent
+    UsersFormComponent
   ], providers: [
     UserService
   ],
+  exports: [
+  ]
 
 })
 export class UsersModule { }

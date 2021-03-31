@@ -6,6 +6,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Roles } from './models/enum/roles';
 import { UserStatuInfo } from './models/enum/userStatusInfo';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -25,7 +26,7 @@ export class UsersComponent implements OnInit {
 
 
   constructor(private userService: UserService, private toastr:
-    ToastrService,) { }
+    ToastrService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -46,6 +47,10 @@ export class UsersComponent implements OnInit {
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
+  }
+
+  insert() {
+    this.router.navigate(['/users/form'])
   }
 
 
