@@ -5,16 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
-
-// Tabs Component
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { UserService } from './services/user.service';
-
-
-
-// Notifications Routing
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   imports: [
@@ -32,7 +27,8 @@ import { UsersComponent } from './users.component';
         positionClass: 'toast-bottom-right',
       }
     ),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    DataTablesModule
 
   ],
   declarations: [

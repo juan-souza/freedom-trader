@@ -5,6 +5,7 @@ import { UserService } from './services/user.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Roles } from './models/enum/roles';
 import { UserStatuInfo } from './models/enum/userStatusInfo';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -18,6 +19,8 @@ export class UsersComponent implements OnInit {
   userDelete: User
   userRoles = Roles;
   userStatusInfo = UserStatuInfo;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
 
 
 
@@ -26,12 +29,25 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 2
+    };
+
     this.userService.findAll().subscribe(resp => {
       this.users = resp;
+      this.dtTrigger.next();
     }), error => {
       this.toastr.error('Não foi possível carregar os Usuários!')
     }
   }
+
+
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
+  }
+
 
 
   deletePreview(user: User) {
