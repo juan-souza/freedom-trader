@@ -12,9 +12,8 @@ const routes: Routes = [
     },
     children: [
       {
-        path: 'users',
+        path: 'form',
         component: UsersComponent,
-
       }
     ]
   }

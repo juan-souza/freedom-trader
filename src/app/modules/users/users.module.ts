@@ -32,8 +32,8 @@ import { DataTablesModule } from 'angular-datatables';
 
   ],
   declarations: [
+    UsersComponent,
     UsersComponent
-
   ], providers: [
     UserService
   ],

@@ -5,6 +5,10 @@
   padding: 0.2rem;
 }
 
+.table.dataTable thead th {
+  border-bottom: 0;
+}
+
 .dataTables_wrapper {
   margin: 10px 1px 10px 1px;
 }
