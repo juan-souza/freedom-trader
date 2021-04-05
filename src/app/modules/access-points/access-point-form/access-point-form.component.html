@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-border">
+
+      <div class="card-body">
+        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="text-input">Nome</label>
+            <div class="col-md-9">
+              <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Inserir nome">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="select1">Exchange</label>
+            <div class="col-md-9">
+              <select id="select1" name="select1" class="form-control">
+                <option value="0">Selecione exchange</option>
+                <option value="1">Option #1</option>
+                <option value="2">Option #2</option>
+                <option value="3">Option #3</option>
+              </select>
+            </div>
+          </div>
+
+          <div *ngIf="false" class="form-group row">
+            <label class="col-md-3 col-form-label">Exchange (Edit)</label>
+            <div class="col-md-9">
+              <p class="form-control-static">Binance</p>
+            </div>
+          </div>
+
+          <div *ngIf="false" class="form-group row">
+            <label class="col-md-3 col-form-label" for="date-input">Data Criação</label>
+            <div class="col-md-9">
+              <input class="form-control" id="date-input" type="date" name="date-input" placeholder="date" disabled>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="password-input">Api Key</label>
+            <div class="col-md-9">
+              <input type="password" id="password-input" name="password-input" class="form-control" placeholder="Inserir chave da API" autocomplete="current-password">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="password-input2">Secret Key</label>
+            <div class="col-md-9">
+              <input type="password" id="password-input2" name="password-input2" class="form-control" placeholder="Inserir chave secreta da API" autocomplete="current-password">
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="card-footer" style="border-top: none">
+        <button type="submit" class="btn btn-sm btn-primary"> Salvar</button>
+        <button type="reset" routerLink="../" class="btn btn-sm btn-secondary"> Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+</div><!--/.row-->

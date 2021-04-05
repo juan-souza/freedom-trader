@@ -76,7 +76,7 @@ import { BreadcrumbsComponent } from './modules/breadcrumbs/breadcrumbs.componen
       {
         timeOut: 3000,
         progressBar: false,
-        progressAnimation: "increasing",
+        progressAnimation: 'increasing',
         enableHtml: true,
         positionClass: 'toast-bottom-right',
       }

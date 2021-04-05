@@ -1,0 +1,112 @@
+<div class="animated fadeIn">
+  <router-outlet></router-outlet>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card card-border">
+        <div class="card-body">
+          <button class="btn btn-primary" (click)="insert()">
+            <i class="fa fa-plus"></i> Adicionar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card card-border">
+        <table
+          datatable
+          [dtOptions]="dtOptions"
+          [dtTrigger]="dtTrigger"
+          class="table table-responsive-sm table-hover table-striped mb-0">
+          <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Exchange</th>
+            <th>Data de Registro</th>
+            <th>Api Key</th>
+            <th>Secret Key</th>
+            <th class="text-center">Ações</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let accessPoint of accessPoints">
+            <td>{{ accessPoint.name }}</td>
+            <td>{{ accessPoint.exchange }}</td>
+            <td >{{ accessPoint.createDate }}</td>
+            <td>*********</td>
+            <td>*********</td>
+            <td class="table-actions text-center">
+              <button
+                type="button"
+                class="btn btn-warning mr-1"
+                title="Editar"
+                routerLink="/access-points/edit">
+                <i class="fa fa-edit"> </i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger mr-1"
+                data-toggle="modal"
+                (click)="deletePreview(accessPoint)">
+                <i class="fa fa-trash"> </i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  bsModal
+  #deleteAccessPointModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="deleteAccessPointModal"
+  aria-hidden="true">
+  <div class="modal-dialog modal-danger" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Excluir Ponto de Acesso</h4>
+        <button
+          type="button"
+          class="close"
+          (click)="deleteAccessPointModal.hide()"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body" *ngIf="accessPointDelete">
+        Tem certeza de que deseja excluir o Ponto de Acesso
+        <b> {{ accessPointDelete.name }}? </b>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="delete(accessPointDelete.id)">
+          Confirmar
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger text-white"
+          (click)="deleteAccessPointModal.hide()">
+          Cancelar
+        </button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

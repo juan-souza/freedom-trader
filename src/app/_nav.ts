@@ -2,16 +2,40 @@ import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
   {
-    name: 'Dashboard',
+    name: 'Painel',
     url: '/dashboard',
     icon: 'icon-speedometer'
   },
   {
-    name: 'Ponto de Acesso',
-    url: '/access-point',
+    name: 'Pontos de Acesso',
+    url: '/access-points',
     icon: 'icon-drop'
   },
   {
+    name: 'Lista de interesse',
+    url: '/dcabot',
+    icon: 'icon-drop',
+    attributes: { disabled: true },
+  },
+  {
+    name: 'Portfólio',
+    url: '/dcabot',
+    icon: 'icon-drop',
+    attributes: { disabled: true },
+  },
+  {
+    name: 'Manual trading',
+    url: '/dcabot',
+    icon: 'icon-drop',
+    attributes: { disabled: true },
+  },
+  {
+    name: 'Ordens inteligentes',
+    url: '/dcabot',
+    icon: 'icon-drop',
+    attributes: { disabled: true },
+  },
+/*  {
     name: 'DCA Bot',
     url: '/dcabot',
     icon: 'icon-drop'
@@ -30,7 +54,7 @@ export const navItems: INavData[] = [
     name: 'Estrategias',
     url: '/strategies',
     icon: 'icon-drop'
-  },
+  },*/
   /*  {
       name: 'Backtest',
       url: '/theme/colors',

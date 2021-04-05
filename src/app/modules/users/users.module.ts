@@ -21,7 +21,7 @@ import { UsersFormComponent } from './users-form/users-form.component';
       {
         timeOut: 3000,
         progressBar: false,
-        progressAnimation: "increasing",
+        progressAnimation: 'increasing',
         enableHtml: true,
         positionClass: 'toast-bottom-right',
       }
