@@ -9,12 +9,15 @@ import {AccessPoint} from '../models/AccessPoint';
 })
 export class AccessPointService {
 
-  apiURL: String = environment.apiBaseUrl + 'access-point/';
+  apiURL: String = environment.apiBaseUrl + 'access-point';
 
   constructor(private http: HttpClient) {
   }
 
-  insert() {
+  insert(accessPoint: AccessPoint) {
+    return this.http.post(`${this.apiURL}`, {
+      accessPoint
+    });
   }
 
   delete(id: number): Observable<any> {
@@ -25,8 +28,12 @@ export class AccessPointService {
     return this.http.get<AccessPoint[]>(`${this.apiURL}`);
   }
 
+  getExchanges(): Observable<AccessPoint[]> {
+    return this.http.get<AccessPoint[]>(`${this.apiURL}/exchange/all`);
+  }
+
   findById(id: Number): Observable<AccessPoint> {
-    return this.http.get<AccessPoint>(`${this.apiURL}/${id}`);
+    return this.http.get<AccessPoint>(`${this.apiURL}${id}`);
   }
 
   update() {

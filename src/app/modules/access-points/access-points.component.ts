@@ -26,7 +26,7 @@ export class AccessPointsComponent implements OnDestroy, OnInit {
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 2
+      pageLength: 10
     };
 
     this.accessPointService.findAll().subscribe(data => {

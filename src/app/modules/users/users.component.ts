@@ -1,12 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { User } from './models/user';
-import { UserService } from './services/user.service';
-import { ModalDirective } from 'ngx-bootstrap/modal';
-import { Roles } from './models/enum/roles';
-import { UserStatuInfo } from './models/enum/userStatusInfo';
-import { Subject } from 'rxjs';
-import { Router } from '@angular/router';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ToastrService} from 'ngx-toastr';
+import {User} from './models/user';
+import {UserService} from './services/user.service';
+import {ModalDirective} from 'ngx-bootstrap/modal';
+import {Roles} from './models/enum/roles';
+import {UserStatuInfo} from './models/enum/userStatusInfo';
+import {Subject} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -17,16 +17,15 @@ export class UsersComponent implements OnInit {
   @ViewChild('deleteUserModal') public deleteUserModal: ModalDirective;
 
   users: User[] = [];
-  userDelete: User
+  userDelete: User;
   userRoles = Roles;
   userStatusInfo = UserStatuInfo;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
-
-
-  constructor(private userService: UserService, private toastr:
-    ToastrService, private router: Router) { }
+  constructor(private userService: UserService, private toaster:
+    ToastrService, private router: Router) {
+  }
 
   ngOnInit(): void {
 
@@ -39,10 +38,9 @@ export class UsersComponent implements OnInit {
       this.users = resp;
       this.dtTrigger.next();
     }), error => {
-      this.toastr.error('Não foi possível carregar os Usuários!')
-    }
+      this.toaster.error('Não foi possível carregar os Usuários!')
+    };
   }
-
 
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
@@ -50,29 +48,26 @@ export class UsersComponent implements OnInit {
   }
 
   insert() {
-    this.router.navigate(['/users/form'])
+    this.router.navigate(['/users/form']);
   }
-
-
 
   deletePreview(user: User) {
     this.userDelete = user;
-    this.deleteUserModal.show()
+    this.deleteUserModal.show();
   }
 
   delete(id: number) {
-    this.deleteUserModal.hide()
+    this.deleteUserModal.hide();
     this.userService.delete(id).subscribe(
       (response) => {
-        this.toastr.success(`Usuário <b>${this.userDelete.name}</b> deletado com sucesso!`);
+        this.toaster.success(`Usuário <b>${this.userDelete.name}</b> deletado com sucesso!`);
         this.ngOnInit();
       },
       (error) => {
-        this.toastr.error('Ocorreu um erro ao deletar o Usuário.');
+        this.toaster.error('Ocorreu um erro ao deletar o Usuário.');
       }
     );
   }
-
 
   getUserStatusInfoClass(userStatusInfo: number): string {
 
@@ -80,23 +75,23 @@ export class UsersComponent implements OnInit {
 
     switch (userStatusInfo) {
       case UserStatuInfo.PENDING_CONFIRM_EMAIL:
-        classStatusInfo = 'badge-warning'
+        classStatusInfo = 'badge-warning';
         break;
       case UserStatuInfo.PENDING_PAYMENT:
-        classStatusInfo = 'badge-warning'
+        classStatusInfo = 'badge-warning';
         break;
       case UserStatuInfo.TIME_TRIAL:
-        classStatusInfo = 'badge-warning'
+        classStatusInfo = 'badge-warning';
         break;
       case UserStatuInfo.PAYMENT_CONFIRMED:
-        classStatusInfo = 'badge-warning'
+        classStatusInfo = 'badge-warning';
         break;
       case UserStatuInfo.LATE_PAYMENT:
-        classStatusInfo = 'badge-warning'
+        classStatusInfo = 'badge-warning';
         break;
     }
 
-    return classStatusInfo
+    return classStatusInfo;
 
   }
 

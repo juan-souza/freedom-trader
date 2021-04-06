@@ -4,5 +4,5 @@ export class AccessPoint {
   createDate: number;
   apiKey: string;
   secretKey: string;
-  exchange: number;
+  exchange: string;
 }

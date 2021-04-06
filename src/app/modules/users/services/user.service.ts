@@ -9,18 +9,18 @@ import { User } from '../models/user';
 })
 export class UserService {
 
-  apiURL: String = environment.apiBaseUrl + 'users/'
+  apiURL: String = environment.apiBaseUrl + 'users/';
 
   constructor(private http: HttpClient) { }
 
   insert() { }
 
   delete(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiURL}/${id}}`)
+    return this.http.delete<any>(`${this.apiURL}/${id}}`);
   }
 
   findAll(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiURL}`)
+    return this.http.get<User[]>(`${this.apiURL}`);
   }
 
   findById(id: Number): Observable<User> {

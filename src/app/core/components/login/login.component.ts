@@ -13,15 +13,15 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent implements OnInit {
 
   user: User;
-  errors: string[]
+  errors: string[];
 
   constructor(private authService: AuthService,
-    private toastr: ToastrService,
+    private toaster: ToastrService,
     private router: Router) { }
 
   ngOnInit(): void {
 
-    this.user = new User()
+    this.user = new User();
   }
 
   onSubmit(): void {
@@ -30,12 +30,12 @@ export class LoginComponent implements OnInit {
     this.authService.login(email, password).subscribe(
       data => {
         this.authService.setToken(data);
-        this.router.navigate(['/dashboard'])
+        this.router.navigate(['/dashboard']);
       },
       err => {
         this.errors = [err.error.message];
         this.errors.forEach(element => {
-          this.toastr.error(`${element}`)
+          this.toaster.error(`${element}`);
         });
       }
     );
