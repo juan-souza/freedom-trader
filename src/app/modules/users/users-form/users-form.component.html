@@ -1,1 +1,147 @@
-<p>users-form works!</p>
+<div class="row">
+  <div class="col-sm-12">
+    <form [formGroup]="forms" (ngSubmit)="onSubmit()">
+      <div class="card card-border">
+        <div class="card-body">
+          <div class="row">
+            <div class="form-group col-4 col-sm-1">
+              <label for="code" class="col-form-label">Código</label>
+              <input
+                type="text"
+                name="code"
+                id="code"
+                class="form-control"
+                formControlName="code"
+              />
+            </div>
+
+            <div class="form-group col-6 offset-2 col-sm-2 offset-sm-2 row">
+              <label for="createDate" class="col-form-label"
+                >Data de Registro</label
+              >
+              <input
+                type="text"
+                name="createDate"
+                id="createDate"
+                class="form-control"
+                formControlName="createDate"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <label class="col-form-label" for="name">Nome</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                formControlName="name"
+                placeholder="Inserir nome"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <label class="col-form-label" for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                formControlName="email"
+                placeholder="crypto@contato.com.br"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-4">
+              <label class="col-form-label" for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                formControlName="password"
+                placeholder="Inserir password"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-3">
+              <label class="col-form-label" for="role">Papel</label>
+              <select
+                id="role"
+                name="role"
+                class="form-control"
+                formControlName="role"
+                required
+              >
+                <option value="" selected disabled>Selecione Papel</option>
+                <!-- <option *ngFor="let exchange of exchanges; let i = index"
+                      value="{{i}}">{{exchange}}</option> -->
+                <option>Guest</option>
+                <option>Usuário</option>
+                <option>Administrador</option>
+              </select>
+            </div>
+
+            <div class="form-group col-sm-3">
+              <label class="col-form-label" for="statusInfo"
+                >Informações de Status</label
+              >
+              <select
+                id="statusInfo"
+                name="statusInfo"
+                class="form-control"
+                formControlName="statusInfo"
+                required
+              >
+                <option value="" selected disabled>Selecione Status</option>
+                <!-- <option *ngFor="let exchange of exchanges; let i = index"
+                      value="{{i}}">{{exchange}}</option> -->
+                <option>E-mail pendente</option>
+                <option>Pagamento Pendente</option>
+                <option>Pagamento confirmado</option>
+                <option>Pagamento Atrasado</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-4">
+              <!-- <div class="col-form-label">Status</div> -->
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="option1"
+                  id="checkbox1"
+                />
+                <label class="form-check-label" for="checkbox1"> Ativo </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer" style="border-top: none">
+          <button type="submit" class="btn btn-md btn-primary">Salvar</button>
+          <button
+            type="reset"
+            routerLink="../"
+            class="btn btn-md btn-secondary"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

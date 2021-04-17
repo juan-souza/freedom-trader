@@ -27,7 +27,7 @@ const userRoutes: Routes = [
         path: 'form',
         component: UsersFormComponent,
         data: {
-          title: 'Formulário'
+          title: 'Novo'
         }
       }
     ]
