@@ -1,0 +1,25 @@
+<div class="card card-border" *ngIf="form">
+  <div class="card-header">Detalhes do Formulário</div>
+  <div class="card-body">
+    <div class="row">
+      <div class="form-group col-sm-2">
+        <label class="col-form-label" for="name"> Fomulário Válido</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          value=" {{ form.valid }}"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <label class="col-form-label" for="value"> Valores:</label>
+        <textarea rows="20" class="form-control">
+            {{ form.value | json }}
+        </textarea>
+      </div>
+    </div>
+  </div>
+</div>

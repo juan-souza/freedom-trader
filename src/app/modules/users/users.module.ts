@@ -11,6 +11,7 @@ import { UsersComponent } from './users.component';
 import { DataTablesModule } from 'angular-datatables';
 import { UsersFormComponent } from './users-form/users-form.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { RouterModule } from '@angular/router';
     TabsModule.forRoot(),
     ReactiveFormsModule,
     RouterModule,
+    SharedModule,
     ToastrModule.forRoot(
       {
         timeOut: 3000,
