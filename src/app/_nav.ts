@@ -19,9 +19,8 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Portfólio',
-    url: '/dcabot',
+    url: '/portfolio-tracker',
     icon: 'icon-drop',
-    attributes: { disabled: true },
   },
   {
     name: 'Manual trading',
@@ -35,13 +34,12 @@ export const navItems: INavData[] = [
     icon: 'icon-drop',
     attributes: { disabled: true },
   },
-/*  {
+  {
     name: 'DCA Bot',
     url: '/dcabot',
     icon: 'icon-drop'
   },
-  {
-    name: 'Ordens aberta',
+/*    name: 'Ordens aberta',
     url: '/orders',
     icon: 'icon-drop'
   },

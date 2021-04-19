@@ -65,6 +65,11 @@ export const routes: Routes = [
         loadChildren: () => import('./modules/access-points/access-points.module').then(m => m.AccessPointsModule)
       },
       {
+        path: 'portfolio-tracker',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./modules/portfolio-tracker/portfolio-tracker.module').then(m => m.PortfolioTrackerModule)
+      },
+      {
         path: 'dcabot',
         canActivate: [AuthGuard],
         loadChildren: () => import('./modules/dcabot/dcabot.module').then(m => m.DcabotModule)
