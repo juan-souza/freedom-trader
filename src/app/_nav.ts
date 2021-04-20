@@ -2,8 +2,13 @@ import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
   {
-    name: 'Painel',
+    name: 'Dashboard',
     url: '/dashboard',
+    icon: 'icon-speedometer'
+  },
+  {
+    name: 'Painel de Controle',
+    url: '/panel-control',
     icon: 'icon-speedometer'
   },
   {
@@ -37,7 +42,8 @@ export const navItems: INavData[] = [
   {
     name: 'DCA Bot',
     url: '/dcabot',
-    icon: 'icon-drop'
+    icon: 'icon-drop',
+    attributes: { disabled: true },
   },
 /*    name: 'Ordens aberta',
     url: '/orders',

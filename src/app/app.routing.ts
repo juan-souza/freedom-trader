@@ -60,6 +60,11 @@ export const routes: Routes = [
         loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
+        path: 'panel-control',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./modules/panel-control/panel-control.module').then(m => m.PanelControlModule)
+      },
+      {
         path: 'access-points',
         canActivate: [AuthGuard],
         loadChildren: () => import('./modules/access-points/access-points.module').then(m => m.AccessPointsModule)
