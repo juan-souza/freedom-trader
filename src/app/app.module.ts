@@ -53,7 +53,6 @@ import { DefaultLayoutComponent } from './modules/default-layout';
 import { DataTablesModule } from 'angular-datatables';
 import { BreadcrumbsComponent } from './modules/breadcrumbs/breadcrumbs.component';
 
-
 @NgModule({
   imports: [
     BrowserModule,

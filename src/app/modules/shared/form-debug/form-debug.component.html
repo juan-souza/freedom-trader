@@ -3,10 +3,10 @@
   <div class="card-body">
     <div class="row">
       <div class="form-group col-sm-2">
-        <label class="col-form-label" for="name"> Fomulário Válido</label>
+        <label class="col-form-label" for="formName"> Fomulário Válido</label>
         <input
           type="text"
-          id="name"
+          id="formName"
           class="form-control"
           value=" {{ form.valid }}"
         />
@@ -15,7 +15,7 @@
 
     <div class="row">
       <div class="form-group col-sm-4">
-        <label class="col-form-label" for="value"> Valores:</label>
+        <label class="col-form-label" for="formValue"> Valores:</label>
         <textarea rows="20" class="form-control">
             {{ form.value | json }}
         </textarea>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormsValidations } from '../../shared/forms-validations';
 
 @Component({
   selector: 'app-users-form',
@@ -21,27 +22,32 @@ export class UsersFormComponent implements OnInit {
       name: [null, [Validators.required, Validators.minLength(5)]],
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.minLength(6)]],
-      role: [null, Validators.required],
-      statusInfo: [null, Validators.required],
-      status: [null, Validators.required]
+      role: [null, [Validators.required]],
+      statusInfo: [null, [Validators.required]],
+      //status: [null, Validators.required]
     })
   }
 
-  onSubmit() { }
+  onSubmit() {
+
+    if (this.forms.valid) {
+      console.log("Form válido")
+    } else {
+      FormsValidations.varifyFormsValidations(this.forms)
+    }
+  }
+
+
+  validTouched(formField: string) {
+    let field = this.forms.get(formField);
+    return FormsValidations.validTouched(field);
+  }
+
 
   reset() {
     this.forms.reset();
   }
 
-  hasErrorForms(field: string) {
-    return {
-      'is-invalid': this.validTouched(field)
-    }
-  }
 
-  validTouched(formField: string) {
-    let field = this.forms.get(formField);
-    return (!field.valid && (field.touched || field.dirty))
-  }
 
 }
