@@ -22,15 +22,11 @@ export class FieldErrorMsgComponent implements OnInit {
 
     for (const propertyName in this.control.errors) {
 
-      console.log(propertyName)
-
       if (this.control.errors.hasOwnProperty(propertyName) && this.control.touched) {
         return FormsValidations.getErrorMsg(this.label, propertyName, this.control.errors[propertyName])
       }
 
     }
-
-    console.log("aqui")
 
     return null
 
