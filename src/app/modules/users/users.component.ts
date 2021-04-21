@@ -1,12 +1,12 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {ToastrService} from 'ngx-toastr';
-import {User} from './models/user';
-import {UserService} from './services/user.service';
-import {ModalDirective} from 'ngx-bootstrap/modal';
-import {Roles} from './models/enum/roles';
-import {UserStatuInfo} from './models/enum/userStatusInfo';
-import {Subject} from 'rxjs';
-import {Router} from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { User } from './models/user';
+import { UserService } from './services/user.service';
+import { ModalDirective } from 'ngx-bootstrap/modal';
+import { Roles } from './models/enum/roles';
+import { UserStatuInfo } from './models/enum/userStatusInfo';
+import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -23,8 +23,10 @@ export class UsersComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
-  constructor(private userService: UserService, private toaster:
-    ToastrService, private router: Router) {
+  constructor(
+    private userService: UserService,
+    private toaster: ToastrService,
+    private router: Router) {
   }
 
   ngOnInit(): void {

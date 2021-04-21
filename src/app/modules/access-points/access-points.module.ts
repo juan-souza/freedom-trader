@@ -1,17 +1,17 @@
 // Angular
-import {CommonModule} from '@angular/common';
-import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
-import {ToastrModule} from 'ngx-toastr';
-import {ModalModule} from 'ngx-bootstrap/modal';
-import {AccessPointFormComponent} from './access-point-form/access-point-form.component';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { ToastrModule } from 'ngx-toastr';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AccessPointFormComponent } from './access-point-form/access-point-form.component';
 
 // Tabs Component
-import {AccessPointsRoutingModule} from './access-points-routing.module';
-import {AccessPointsComponent} from './access-points.component';
-import {DataTablesModule} from 'angular-datatables';
-import {UserService} from '../users/services/user.service';
+import { AccessPointsRoutingModule } from './access-points-routing.module';
+import { AccessPointsComponent } from './access-points.component';
+import { DataTablesModule } from 'angular-datatables';
+import { UserService } from '../users/services/user.service';
 
 @NgModule({
   imports: [

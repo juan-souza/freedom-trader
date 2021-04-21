@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormsUtils } from '../../shared/forms-utils';
 import { FormsValidations } from '../../shared/forms-validations';
@@ -28,7 +29,8 @@ export class UsersFormComponent implements OnInit {
   constructor(
     private formBuild: FormBuilder,
     private userService: UserService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private router: Router) { }
 
   ngOnInit(): void {
 
@@ -52,6 +54,7 @@ export class UsersFormComponent implements OnInit {
         .subscribe(res => {
           this.toastr.success('Cadastro foi realizado com sucesso!'
             , 'Usuário receberá um e-mail para confirmar sua conta!', { timeOut: 10000, })
+          this.router.navigate(['users/'])
         }, err => {
           this.errors = [err.error.message];
           this.errors.forEach(e => {
