@@ -3,7 +3,7 @@
     <form [formGroup]="forms" (ngSubmit)="onSubmit()">
       <div class="card card-border">
         <div class="card-body">
-          <div class="row">
+          <div class="row" *ngIf="forms.get('code').value != null">
             <div class="form-group col-4 col-sm-1">
               <label for="code" class="col-form-label">Código</label>
               <input
@@ -100,12 +100,10 @@
                 [class.is-invalid]="validTouched('role')"
                 required
               >
-                <option value="" selected disabled>Selecione Papel</option>
-                <!-- <option *ngFor="let exchange of exchanges; let i = index"
-                      value="{{i}}">{{exchange}}</option> -->
-                <option>Guest</option>
-                <option>Usuário</option>
-                <option>Administrador</option>
+                <option value="" selected disabled>Selecione um Papel</option>
+                <option *ngFor="let role of roles" value="{{ role.value }}">
+                  {{ role.title }}
+                </option>
               </select>
               <app-field-error-msg
                 [control]="forms.get('role')"
@@ -126,12 +124,12 @@
                 required
               >
                 <option value="" selected disabled>Selecione Status</option>
-                <!-- <option *ngFor="let exchange of exchanges; let i = index"
-                      value="{{i}}">{{exchange}}</option> -->
-                <option>E-mail pendente</option>
-                <option>Pagamento Pendente</option>
-                <option>Pagamento confirmado</option>
-                <option>Pagamento Atrasado</option>
+                <option
+                  *ngFor="let statusInfo of statusInfo"
+                  value="{{ statusInfo.value }}"
+                >
+                  {{ statusInfo.title }}
+                </option>
               </select>
               <app-field-error-msg
                 [control]="forms.get('statusInfo')"

@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { FormsUtils } from '../../shared/forms-utils';
 import { FormsValidations } from '../../shared/forms-validations';
+import { Roles } from '../models/enum/roles';
+import { UserStatuInfo } from '../models/enum/userStatusInfo';
+import { User } from '../models/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-users-form',
@@ -11,8 +17,18 @@ export class UsersFormComponent implements OnInit {
 
 
   forms: FormGroup;
+  user: User;
+  roles = FormsUtils.enumSelector(Roles);
+  statusInfo = FormsUtils.enumSelector(UserStatuInfo)
+  selectedRole = Roles.GUEST;
+  selectedStatusInfo = UserStatuInfo.PENDING_CONFIRM_EMAIL;
+  errors: string[];
 
-  constructor(private formBuild: FormBuilder) { }
+
+  constructor(
+    private formBuild: FormBuilder,
+    private userService: UserService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
 
@@ -22,16 +38,26 @@ export class UsersFormComponent implements OnInit {
       name: [null, [Validators.required, Validators.minLength(5)]],
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.minLength(6)]],
-      role: [null, [Validators.required]],
-      statusInfo: [null, [Validators.required]],
-      status: [null, Validators.required]
+      role: [this.selectedRole, [Validators.required]],
+      statusInfo: [this.selectedStatusInfo, [Validators.required]],
+      status: [true, Validators.required]
     })
+
   }
 
   onSubmit() {
 
     if (this.forms.valid) {
-      console.log("Form válido")
+      this.userService.insert(JSON.stringify(this.forms.value))
+        .subscribe(res => {
+          this.toastr.success('Cadastro foi realizado com sucesso!'
+            , 'Usuário receberá um e-mail para confirmar sua conta!', { timeOut: 10000, })
+        }, err => {
+          this.errors = [err.error.message];
+          this.errors.forEach(e => {
+            this.toastr.error(`${e}`)
+          })
+        })
     } else {
       FormsValidations.varifyFormsValidations(this.forms)
     }
