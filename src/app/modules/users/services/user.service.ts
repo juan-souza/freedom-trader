@@ -19,7 +19,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  insert(user: string) {
+  insert(user: User) {
     return this.http.post<any>(this.apiURL, user, this.httpOptions)
   }
 
@@ -35,8 +35,15 @@ export class UserService {
     return this.http.get<User>(`${this.apiURL}/${id}`).pipe(take(1));
   }
 
-  update(user: string, id: Number) {
-    return this.http.put<any>(`${this.apiURL}/${id}`, user, this.httpOptions)
+  update(user: User) {
+    return this.http.put<any>(`${this.apiURL}/${user.id}`, user, this.httpOptions)
+  }
+
+  save(user: User) {
+    if (user.id) {
+      return this.update(user)
+    }
+    return this.insert(user)
   }
 
 

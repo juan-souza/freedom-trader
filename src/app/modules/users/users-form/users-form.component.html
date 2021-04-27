@@ -3,7 +3,7 @@
     <form [formGroup]="forms" (ngSubmit)="onSubmit()">
       <div class="card card-border">
         <div class="card-body">
-          <div class="row" *ngIf="forms.get('id').value != null">
+          <div class="row" *ngIf="forms.get('createDate').value != null">
             <div class="form-group col-6 col-sm-2">
               <label for="createDate" class="col-form-label"
                 >Data de Registro</label

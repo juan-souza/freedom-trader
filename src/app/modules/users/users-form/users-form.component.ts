@@ -69,65 +69,47 @@ export class UsersFormComponent implements OnInit {
       statusInfo: [this.selectedStatusInfo, [Validators.required]],
       status: [true, Validators.required],
     });
+
   }
 
   updateForm(user: User) {
-    this.forms.patchValue(
-      {
-        id: user.id,
-        name: user.name,
-        password: user.password,
-        email: user.email,
-        role: user.role,
-        statusInfo: user.statusInfo,
-        active: user.active,
-        createDate: formatDate(user.createDate, 'dd-MM-yyyy', 'pt-BR')
-
-        ,
-      }
-    )
+    this.forms
+      .patchValue(
+        {
+          id: user.id,
+          name: user.name,
+          password: user.password,
+          email: user.email,
+          role: user.role,
+          statusInfo: user.statusInfo,
+          active: user.active,
+          createDate: formatDate(user.createDate, 'dd-MM-yyyy', 'pt-BR')
+        }
+      )
   }
 
   onSubmit() {
     if (this.forms.valid) {
 
+      let msgTitle = "Cadastro foi realizado com sucesso!";
+      let msgBody = "Usuário receberá um e-mail para confirmar sua conta!"
+
       if (this.forms.value.id) {
-        this.userService.update(JSON.stringify(this.forms.value), this.forms.value.id).subscribe(
-          (res) => {
-            this.toastr.success(
-              "Cadastro Atualizado com sucesso!",
-              "",
-              { timeOut: 10000 }
-            );
-            this.router.navigate(["users/"]);
-          },
-          (err) => {
-            this.errors = [err.error.message];
-            this.errors.forEach((e) => {
-              this.toastr.error(`${e}`);
-            });
-          }
-        );
-
-
-      } else {
-        this.userService.insert(JSON.stringify(this.forms.value)).subscribe(
-          (res) => {
-            this.toastr.success(
-              "Cadastro foi realizado com sucesso!",
-              "Usuário receberá um e-mail para confirmar sua conta!",
-              { timeOut: 10000 }
-            );
-            this.router.navigate(["users/"]);
-          },
-          (err) => {
-            this.errors = [err.error.message];
-            this.errors.forEach((e) => {
-              this.toastr.error(`${e}`);
-            });
-          }
-        );
+        msgTitle = "Cadastro Atualizado com sucesso!"
+        msgBody = ""
       }
+
+      this.userService.save(this.forms.value)
+        .subscribe(res => {
+          this.toastr.success(msgTitle, msgBody, { timeOut: 10000 });
+          this.router.navigate(["users/"]);
+        }, err => {
+          this.errors = [err.error.message];
+          this.errors.forEach((e) => {
+            this.toastr.error(`${e}`);
+          });
+
+        })
     } else {
       FormsValidations.varifyFormsValidations(this.forms);
     }
