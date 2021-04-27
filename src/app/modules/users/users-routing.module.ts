@@ -24,10 +24,17 @@ const userRoutes: Routes = [
         }
       },
       {
-        path: 'form',
+        path: 'new',
         component: UsersFormComponent,
         data: {
           title: 'Novo'
+        }
+      },
+      {
+        path: 'edit/:id',
+        component: UsersFormComponent,
+        data: {
+          title: 'Editar'
         }
       }
     ]

@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {AccessPointService} from '../services/acess-point.service';
-import {ToastrService} from 'ngx-toastr';
-import {Router} from '@angular/router';
-import {AccessPoint} from '../models/AccessPoint';
+import { Component, OnInit } from '@angular/core';
+import { AccessPointService } from '../services/acess-point.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { AccessPoint } from '../models/AccessPoint';
 
 @Component({
   selector: 'app-access-point-form',

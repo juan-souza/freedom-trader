@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import { User } from '../models/user';
 
@@ -19,7 +20,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   insert(user: string) {
-    console.log(user)
     return this.http.post<any>(this.apiURL, user, this.httpOptions)
   }
 
@@ -32,10 +32,12 @@ export class UserService {
   }
 
   findById(id: Number): Observable<User> {
-    return this.http.get<User>(`${this.apiURL}/${id}`);
+    return this.http.get<User>(`${this.apiURL}/${id}`).pipe(take(1));
   }
 
-  update() { }
+  update(user: string, id: Number) {
+    return this.http.put<any>(`${this.apiURL}/${id}`, user, this.httpOptions)
+  }
 
 
 }

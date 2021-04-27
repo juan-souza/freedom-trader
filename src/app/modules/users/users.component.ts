@@ -6,7 +6,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Roles } from './models/enum/roles';
 import { UserStatuInfo } from './models/enum/userStatusInfo';
 import { Subject } from 'rxjs';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -50,7 +50,12 @@ export class UsersComponent implements OnInit {
   }
 
   insert() {
-    this.router.navigate(['/users/form']);
+    this.router.navigate(['/users/new']);
+  }
+
+  onEdit(id: number) {
+    this.router.navigate(['/users/edit', id])
+
   }
 
   deletePreview(user: User) {

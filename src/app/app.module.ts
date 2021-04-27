@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { LocationStrategy, PathLocationStrategy, registerLocaleData } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -27,6 +27,8 @@ import { P500Component } from './core/components/error/500.component';
 import { LoginComponent } from './core/components/login/login.component';
 import { RegisterComponent } from './core/components/register/register.component';
 import { ForgotPasswordComponent } from './core/components/forgot/forgot-password.component';
+import localept from '@angular/common/locales/pt';
+registerLocaleData(localept, 'pt')
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -103,7 +105,8 @@ import { BreadcrumbsComponent } from './modules/breadcrumbs/breadcrumbs.componen
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    { provide: LOCALE_ID, useValue: "pt" }
   ],
   bootstrap: [AppComponent]
 })

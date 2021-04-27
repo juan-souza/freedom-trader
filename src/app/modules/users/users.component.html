@@ -57,22 +57,39 @@
               </td>
 
               <td class="table-actions">
-                <button
-                  type="button"
-                  class="btn btn-warning mr-1"
-                  title="Editar"
-                  routerLink=""
-                >
-                  <i class="fa fa-edit"> </i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-danger mr-1"
-                  data-toggle="modal"
-                  (click)="deletePreview(user)"
-                >
-                  <i class="fa fa-trash"> </i>
-                </button>
+                <div class="btn-group" dropdown>
+                  <button
+                    dropdownToggle
+                    type="button"
+                    class="btn btn-danger dropdown-toggle"
+                  >
+                    <span class="caret">...</span>
+                  </button>
+                  <ul
+                    *dropdownMenu
+                    class="dropdown-menu dropdown-menu-right"
+                    role="menu"
+                  >
+                    <li role="menuitem">
+                      <a
+                        class="dropdown-item"
+                        routerLink=".."
+                        (click)="onEdit(user.id)"
+                      >
+                        <i class="fa fa-edit"></i>Editar</a
+                      >
+                    </li>
+                    <li role="menuitem">
+                      <a
+                        class="dropdown-item"
+                        routerLink=".."
+                        (click)="deletePreview(user)"
+                      >
+                        <i class="fa fa-trash"></i>Remover</a
+                      >
+                    </li>
+                  </ul>
+                </div>
               </td>
             </tr>
           </tbody>
