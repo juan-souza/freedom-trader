@@ -12,6 +12,7 @@ import { AccessPointsRoutingModule } from './access-points-routing.module';
 import { AccessPointsComponent } from './access-points.component';
 import { DataTablesModule } from 'angular-datatables';
 import { UserService } from '../users/services/user.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { UserService } from '../users/services/user.service';
         positionClass: 'toast-bottom-right',
       }
     ),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    SharedModule
 
   ],
   declarations: [
