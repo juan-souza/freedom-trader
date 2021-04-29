@@ -20,42 +20,63 @@
           datatable
           [dtOptions]="dtOptions"
           [dtTrigger]="dtTrigger"
-          class="table table-responsive-mb mb-0">
+          class="table table-responsive-mb mb-0"
+        >
           <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Exchange</th>
-            <th>Data de Registro</th>
-            <th>Api Key</th>
-            <th>Secret Key</th>
-            <th class="text-center">Ações</th>
-          </tr>
+            <tr>
+              <th>Nome</th>
+              <th>Exchange</th>
+              <th>Data de Registro</th>
+              <th>Api Key</th>
+              <th>Secret Key</th>
+              <th class="text-center">Ações</th>
+            </tr>
           </thead>
 
           <tbody>
-          <tr *ngFor="let accessPoint of accessPoints">
-            <td>{{ accessPoint.name }}</td>
-            <td>{{ accessPoint.exchange }}</td>
-            <td >{{ accessPoint.createDate }}</td>
-            <td>*********</td>
-            <td>*********</td>
-            <td class="table-actions text-center">
-              <button
-                type="button"
-                class="btn btn-warning mr-1"
-                title="Editar"
-                routerLink="/access-points/edit">
-                <i class="fa fa-edit"> </i>
-              </button>
-              <button
-                type="button"
-                class="btn btn-danger mr-1"
-                data-toggle="modal"
-                (click)="deletePreview(accessPoint)">
-                <i class="fa fa-trash"> </i>
-              </button>
-            </td>
-          </tr>
+            <tr *ngFor="let accessPoint of accessPoints">
+              <td>{{ accessPoint.name }}</td>
+              <td>{{ exchanges[accessPoint.exchange] }}</td>
+              <td>{{ accessPoint.createDate }}</td>
+              <td>*********</td>
+              <td>*********</td>
+
+              <td class="table-actions text-center">
+                <div class="btn-group" dropdown>
+                  <button
+                    dropdownToggle
+                    type="button"
+                    class="btn btn-danger dropdown-toggle"
+                  >
+                    <span class="caret">...</span>
+                  </button>
+                  <ul
+                    *dropdownMenu
+                    class="dropdown-menu dropdown-menu-right"
+                    role="menu"
+                  >
+                    <!-- <li role="menuitem">
+                    <a
+                      class="dropdown-item"
+                      routerLink=".."
+                      (click)="onEdit(accessPoint.id)"
+                    >
+                      <i class="fa fa-edit"></i>Editar</a
+                    >
+                  </li> -->
+                    <li role="menuitem">
+                      <a
+                        class="dropdown-item"
+                        routerLink=".."
+                        (click)="deletePreview(accessPoint)"
+                      >
+                        <i class="fa fa-trash"></i>Remover</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -71,7 +92,8 @@
   tabindex="-1"
   role="dialog"
   aria-labelledby="deleteAccessPointModal"
-  aria-hidden="true">
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-danger" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -80,7 +102,8 @@
           type="button"
           class="close"
           (click)="deleteAccessPointModal.hide()"
-          aria-label="Close">
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -94,13 +117,15 @@
         <button
           type="button"
           class="btn btn-success"
-          (click)="delete(accessPointDelete.id)">
+          (click)="delete(accessPointDelete.id)"
+        >
           Confirmar
         </button>
         <button
           type="button"
           class="btn btn-danger text-white"
-          (click)="deleteAccessPointModal.hide()">
+          (click)="deleteAccessPointModal.hide()"
+        >
           Cancelar
         </button>
       </div>

@@ -1,11 +1,11 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {AccessPoint} from './models/AccessPoint';
-import {Subject} from 'rxjs';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AccessPoint } from './models/AccessPoint';
+import { Subject } from 'rxjs';
 
-import {ModalDirective} from 'ngx-bootstrap/modal';
-import {AccessPointService} from '../access-points/services/acess-point.service';
-import {ToastrService} from 'ngx-toastr';
-import {Router} from '@angular/router';
+import { ModalDirective } from 'ngx-bootstrap/modal';
+import { AccessPointService } from '../access-points/services/acess-point.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-access-points',
@@ -18,6 +18,7 @@ export class AccessPointsComponent implements OnDestroy, OnInit {
   accessPointDelete: AccessPoint;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
+  exchanges = [];
 
   constructor(private accessPointService: AccessPointService, private toastr:
     ToastrService, private router: Router) {
@@ -29,11 +30,10 @@ export class AccessPointsComponent implements OnDestroy, OnInit {
       pageLength: 10
     };
 
-    this.accessPointService.findAll().subscribe(data => {
-      this.accessPoints = data;
-      // Calling the DT trigger to manually render the table
-      this.dtTrigger.next();
-    });
+
+    this.getAllExchanges();
+    this.getAllAccessPoints();
+
   }
 
   ngOnDestroy(): void {
@@ -61,6 +61,22 @@ export class AccessPointsComponent implements OnDestroy, OnInit {
         this.toastr.error('Ocorreu um erro ao deletar o Ponto de Acesso.');
       }
     );
+  }
+
+  getAllExchanges() {
+    this.accessPointService.getExchanges().subscribe(
+      (data) => {
+        this.exchanges = data;
+      },
+    );
+  }
+
+  getAllAccessPoints() {
+    this.accessPointService.findAll().subscribe(data => {
+      this.accessPoints = data;
+      // Calling the DT trigger to manually render the table
+      this.dtTrigger.next();
+    });
   }
 
 }

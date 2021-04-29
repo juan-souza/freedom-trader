@@ -28,7 +28,7 @@ export class UsersFormComponent implements OnInit {
   constructor(
     private formBuild: FormBuilder,
     private userService: UserService,
-    private toastr: ToastrService,
+    private toaster: ToastrService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -101,12 +101,12 @@ export class UsersFormComponent implements OnInit {
 
       this.userService.save(this.forms.value)
         .subscribe(res => {
-          this.toastr.success(msgTitle, msgBody, { timeOut: 10000 });
+          this.toaster.success(msgTitle, msgBody, { timeOut: 10000 });
           this.router.navigate(["users/"]);
         }, err => {
           this.errors = [err.error.message];
           this.errors.forEach((e) => {
-            this.toastr.error(`${e}`);
+            this.toaster.error(`${e}`);
           });
 
         })

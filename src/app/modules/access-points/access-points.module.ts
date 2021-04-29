@@ -1,7 +1,7 @@
 // Angular
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -13,14 +13,17 @@ import { AccessPointsComponent } from './access-points.component';
 import { DataTablesModule } from 'angular-datatables';
 import { UserService } from '../users/services/user.service';
 import { SharedModule } from '../shared/shared.module';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   imports: [
     AccessPointsRoutingModule,
     CommonModule,
     DataTablesModule,
-    FormsModule,
+    ReactiveFormsModule,
     RouterModule,
+    BsDropdownModule,
     ToastrModule.forRoot(
       {
         timeOut: 3000,
@@ -31,7 +34,8 @@ import { SharedModule } from '../shared/shared.module';
       }
     ),
     ModalModule.forRoot(),
-    SharedModule
+    SharedModule,
+    TooltipModule.forRoot(),
 
   ],
   declarations: [

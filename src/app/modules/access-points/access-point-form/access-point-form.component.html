@@ -1,98 +1,120 @@
 <div class="row">
   <div class="col-md-12">
-    <form name="AccessPointForm"
-          (ngSubmit)="AccessPointForm.form.valid && onSubmit()"
-          #AccessPointForm="ngForm"
-          novalidate>
-
+    <form [formGroup]="forms" (ngSubmit)="onSubmit()">
       <div class="card card-border">
         <div class="card-body">
-          <div class="form-group row">
+          <div class="form-group">
             <label class="col-md-3 col-form-label" for="name">Nome</label>
             <div class="col-md-9">
-              <input type="text"
-                     id="name"
-                     name="name"
-                     #name="ngModel"
-                     [class.is-invalid]="!name.valid && name.touched"
-                     class="form-control"
-                     placeholder="Inserir nome"
-                     [(ngModel)]="accessPoint.name"
-                     required>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                formControlName="name"
+                [class.is-invalid]="validTouched('name')"
+                class="form-control"
+                placeholder="Inserir nome"
+                required
+              />
+              <app-field-error-msg
+                [control]="forms.get('name')"
+                label="Nome"
+              ></app-field-error-msg>
             </div>
           </div>
-          <div *ngIf="!edition" class="form-group row">
-            <label class="col-md-3 col-form-label" for="exchange">Exchange</label>
+          <div class="form-group">
+            <label class="col-md-3 col-form-label" for="exchange"
+              >Exchange</label
+            >
             <div class="col-md-9">
-              <select id="exchange"
-                      name="exchange"
-                      class="form-control"
-                      #exchange="ngModel"
-                      [class.is-invalid]="!exchange.valid && exchange.touched"
-                      [(ngModel)]="accessPoint.exchange"
-                      required>
+              <select
+                id="exchange"
+                name="exchange"
+                class="form-control"
+                formControlName="exchange"
+                [class.is-invalid]="validTouched('exchange')"
+                required
+              >
                 <option value="" selected disabled>Selecione exchange</option>
-                <option *ngFor="let exchange of exchanges; let i = index"
-                        value="{{i}}">{{exchange}}</option>
+                <option
+                  *ngFor="let exchange of exchanges; let i = index"
+                  value="{{ i }}"
+                >
+                  {{ exchange }}
+                </option>
               </select>
+              <app-field-error-msg
+                [control]="forms.get('exchange')"
+                label="Exchange"
+              ></app-field-error-msg>
             </div>
           </div>
-          <div *ngIf="edition" class="form-group row">
-            <label class="col-md-3 col-form-label">Exchange</label>
+          <div class="form-group">
+            <label class="col-md-3 col-form-label" for="api-key"
+              >Chave da API
+              <i
+                [tooltip]="tooltipApiKey"
+                class="fa fa-question-circle fa-lg mt-4"
+              ></i>
+            </label>
             <div class="col-md-9">
-              <p class="form-control-static">Binance</p>
+              <input
+                type="password"
+                id="apiKey"
+                name="apiKey"
+                class="form-control"
+                formControlName="apiKey"
+                [class.is-invalid]="validTouched('apiKey')"
+                placeholder="Inserir chave da API"
+                required
+              />
+              <app-field-error-msg
+                [control]="forms.get('apiKey')"
+                label="chave da API"
+              ></app-field-error-msg>
             </div>
           </div>
-          <div *ngIf="edition" class="form-group row">
-            <label class="col-md-3 col-form-label" for="date-input">Data Criação</label>
-            <div class="col-md-9">
-              <input class="form-control"
-                     id="date-input"
-                     type="date"
-                     name="date-input"
-                     placeholder="date"
-                     disabled>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label" for="api-key">Api Key</label>
-            <div class="col-md-9">
-              <input type="password"
-                     id="api-key"
-                     name="api-key"
-                     class="form-control"
-                     #apiKey="ngModel"
-                     [class.is-invalid]="!apiKey.valid && apiKey.touched"
-                     placeholder="Inserir chave da API"
-                     [(ngModel)]="accessPoint.apiKey"
-                     required>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label" for="secret-Key">Secret Key</label>
-            <div class="col-md-9">
-              <input type="password"
-                     id="secret-Key"
-                     name="secret-Key"
-                     class="form-control"
-                     #secretKey="ngModel"
-                     [class.is-invalid]="!secretKey.valid && secretKey.touched"
-                     placeholder="Inserir chave secreta da API"
-                     [(ngModel)]="accessPoint.secretKey"
-                     required>
-            </div>
-          </div>
+          <div class="form-group">
+            <label class="col-md-3 col-form-label" for="secret-Key"
+              >chave secreta da API
 
+              <i
+                [tooltip]="tooltipSecreKey"
+                class="fa fa-question-circle fa-lg mt-4"
+              ></i
+            ></label>
+            <div class="col-md-9">
+              <input
+                type="password"
+                id="secretKey"
+                name="secretKey"
+                class="form-control"
+                formControlName="secretKey"
+                [class.is-invalid]="validTouched('secretKey')"
+                placeholder="Inserir chave secreta da API"
+                required
+              />
+              <app-field-error-msg
+                [control]="forms.get('secretKey')"
+                label="chave secreta da API
+                "
+              ></app-field-error-msg>
+            </div>
+          </div>
         </div>
         <div class="card-footer" style="border-top: none">
-          <button type="submit"
-                  class="btn btn-md btn-primary"
-                  [disabled]="!AccessPointForm.valid"> Salvar
+          <button type="submit" class="btn btn-md btn-primary">Salvar</button>
+          <button
+            type="reset"
+            routerLink=".."
+            (click)="onCancel()"
+            class="btn btn-md btn-secondary"
+          >
+            Cancelar
           </button>
-          <button type="reset" routerLink="../" class="btn btn-md btn-secondary"> Cancelar</button>
         </div>
       </div>
     </form>
   </div>
-
-</div><!--/.row-->
+</div>
+<!--/.row-->
