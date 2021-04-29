@@ -27,7 +27,7 @@ export const navItems: INavData[] = [
     url: '/portfolio-tracker',
     icon: 'icon-drop',
   },
-  {
+  /*{
     name: 'Manual trading',
     url: '/dcabot',
     icon: 'icon-drop',
@@ -45,7 +45,7 @@ export const navItems: INavData[] = [
     icon: 'icon-drop',
     attributes: { disabled: true },
   },
-/*    name: 'Ordens aberta',
+    name: 'Ordens aberta',
     url: '/orders',
     icon: 'icon-drop'
   },
